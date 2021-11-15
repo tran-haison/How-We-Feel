@@ -1,0 +1,18 @@
+{
+  "app_name": "Fitness Health Test App",
+
+  "login_sign_in_welcome_title": "Welcome back,",
+  "login_sign_in_welcome_prompt": "Enter username and password to get started",
+  "login_sign_in_dont_have_account": "Don't have an account? Sign up",
+  "login_sign_in_forgot_password": "Forgot password?",
+  "login_sign_in": "Sign in",
+  "login_sign_up_welcome_title": "Welcome,",
+  "login_sign_up_welcome_prompt": "Register a new account to start your journey with us",
+  "login_sign_up_already_have_account": "Already have an account? Sign in",
+  "login_sign_up": "Sign up",
+  "login_username": "Username",
+  "login_email": "Email",
+  "login_password": "Password",
+
+  "error": "Something wrong! Please try again"
+}
