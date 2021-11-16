@@ -10,6 +10,7 @@ class Dimens {
   static const double radius10 = 10;
 
   // Button height
+  static const double buttonHeight30 = 30;
   static const double buttonHeight40 = 40;
 
   // Text size

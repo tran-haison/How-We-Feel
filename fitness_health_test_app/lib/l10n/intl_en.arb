@@ -10,9 +10,16 @@
   "login_sign_up_welcome_prompt": "Register a new account to start your journey with us",
   "login_sign_up_already_have_account": "Already have an account? Sign in",
   "login_sign_up": "Sign up",
+  "login_forgot_password_title": "Forgot password,",
+  "login_forgot_password_prompt": "We will send a link to your email to reset password",
+  "login_forgot_password_confirm": "Confirm",
   "login_username": "Username",
   "login_email": "Email",
   "login_password": "Password",
+  "login_confirm_password": "Confirm password",
 
-  "error": "Something wrong! Please try again"
+  "error": "Something's wrong! Please try again",
+  "error_email_invalid": "Invalid email! Please enter correct email",
+  "error_username_invalid": "Username cannot be empty",
+  "error_password_invalid": "Password must contain at least 8 characters with 1 UPPERCASE, 1 LOWERCASE, 1 NUMBER, 1 SPECIAL CHARACTER"
 }

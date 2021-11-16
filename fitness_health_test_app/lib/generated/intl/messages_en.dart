@@ -25,8 +25,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_name":
             MessageLookupByLibrary.simpleMessage("Fitness Health Test App"),
         "error": MessageLookupByLibrary.simpleMessage(
-            "Something wrong! Please try again"),
+            "Something\'s wrong! Please try again"),
+        "error_email_invalid": MessageLookupByLibrary.simpleMessage(
+            "Invalid email! Please enter correct email"),
+        "error_password_invalid": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 8 characters with 1 UPPERCASE, 1 LOWERCASE, 1 NUMBER, 1 SPECIAL CHARACTER"),
+        "error_username_invalid":
+            MessageLookupByLibrary.simpleMessage("Username cannot be empty"),
+        "login_confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
         "login_email": MessageLookupByLibrary.simpleMessage("Email"),
+        "login_forgot_password_confirm":
+            MessageLookupByLibrary.simpleMessage("Confirm"),
+        "login_forgot_password_prompt": MessageLookupByLibrary.simpleMessage(
+            "We will send a link to your email to reset password"),
+        "login_forgot_password_title":
+            MessageLookupByLibrary.simpleMessage("Forgot password,"),
         "login_password": MessageLookupByLibrary.simpleMessage("Password"),
         "login_sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
         "login_sign_in_dont_have_account": MessageLookupByLibrary.simpleMessage(

@@ -150,6 +150,36 @@ class S {
     );
   }
 
+  /// `Forgot password,`
+  String get login_forgot_password_title {
+    return Intl.message(
+      'Forgot password,',
+      name: 'login_forgot_password_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We will send a link to your email to reset password`
+  String get login_forgot_password_prompt {
+    return Intl.message(
+      'We will send a link to your email to reset password',
+      name: 'login_forgot_password_prompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get login_forgot_password_confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'login_forgot_password_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Username`
   String get login_username {
     return Intl.message(
@@ -180,11 +210,51 @@ class S {
     );
   }
 
-  /// `Something wrong! Please try again`
+  /// `Confirm password`
+  String get login_confirm_password {
+    return Intl.message(
+      'Confirm password',
+      name: 'login_confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something's wrong! Please try again`
   String get error {
     return Intl.message(
-      'Something wrong! Please try again',
+      'Something\'s wrong! Please try again',
       name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid email! Please enter correct email`
+  String get error_email_invalid {
+    return Intl.message(
+      'Invalid email! Please enter correct email',
+      name: 'error_email_invalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username cannot be empty`
+  String get error_username_invalid {
+    return Intl.message(
+      'Username cannot be empty',
+      name: 'error_username_invalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least 8 characters with 1 UPPERCASE, 1 LOWERCASE, 1 NUMBER, 1 SPECIAL CHARACTER`
+  String get error_password_invalid {
+    return Intl.message(
+      'Password must contain at least 8 characters with 1 UPPERCASE, 1 LOWERCASE, 1 NUMBER, 1 SPECIAL CHARACTER',
+      name: 'error_password_invalid',
       desc: '',
       args: [],
     );

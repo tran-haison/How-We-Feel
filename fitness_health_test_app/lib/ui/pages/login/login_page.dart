@@ -1,5 +1,6 @@
 import 'package:fitness_health_test_app/generated/l10n.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/error_message_container.dart';
+import 'package:fitness_health_test_app/ui/pages/login/forgot_password/forgot_password_page.dart';
 import 'package:fitness_health_test_app/ui/pages/login/login_page_item.dart';
 import 'package:fitness_health_test_app/ui/pages/login/sign_in/sign_in_page.dart';
 import 'package:fitness_health_test_app/ui/pages/login/sign_up/sign_up_page.dart';
@@ -42,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(Dimens.dimen15),
-            child: StreamBuilder(
+            child: StreamBuilder<LoginPageItem>(
               stream: viewModel.loginPageItemStream,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.active) {
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                   if (pageItem == null) {
                     return ErrorMessageContainer(text: S.of(context).error);
                   }
-                  return _buildPageItem(pageItem as LoginPageItem);
+                  return _buildPageItem(pageItem);
                 }
                 return const Center(
                   child: CircularProgressIndicator(),
@@ -70,8 +71,9 @@ class _LoginPageState extends State<LoginPage> {
       case LoginPageItem.signUp:
         return const SignUpPage();
       case LoginPageItem.forgotPassword:
-      // TODO: add forgot password page
+        return const ForgotPasswordPage();
+      default:
+        return const SignInPage();
     }
-    return const SignInPage();
   }
 }
