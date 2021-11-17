@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:fitness_health_test_app/ui/pages/login/login_page_item.dart';
 
 class LoginViewModel {
-  // Stream to manage page item
+  // Stream to manage current page item
   final _loginPageItemController = StreamController<LoginPageItem>();
-  void setLoginPageItem(LoginPageItem pageItems) => _loginPageItemController.sink.add(pageItems);
+  Function(LoginPageItem) get setLoginPageItem => _loginPageItemController.sink.add;
   Stream<LoginPageItem> get loginPageItemStream => _loginPageItemController.stream;
 
   // Back button pressed

@@ -259,6 +259,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Password must match`
+  String get error_confirm_password_invalid {
+    return Intl.message(
+      'Password must match',
+      name: 'error_confirm_password_invalid',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,6 +1,9 @@
 import 'package:fitness_health_test_app/generated/l10n.dart';
-import 'package:fitness_health_test_app/ui/common_widgets/login_rounded_elevated_button.dart';
-import 'package:fitness_health_test_app/ui/common_widgets/login_text_form_field.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_rounded_elevated_button.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_content.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_form_field.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_input_error.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_title.dart';
 import 'package:fitness_health_test_app/ui/pages/login/forgot_password/forgot_password_form.dart';
 import 'package:fitness_health_test_app/ui/pages/login/login_page_item.dart';
 import 'package:fitness_health_test_app/values/dimens.dart';
@@ -45,36 +48,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                _buildTextForgotPasswordTitle(context),
-                _buildTextForgotPasswordPrompt(context),
+                LoginTextTitle(title: S.of(context).login_forgot_password_title),
+                LoginTextContent(content: S.of(context).login_forgot_password_prompt),
                 const SizedBox(height: Dimens.dimen20),
                 _buildEmailTextFormField(),
-                _buildEmailTextError(context),
+                LoginTextInputError(
+                  streamInput: _forgotPasswordForm.emailStream,
+                  errorText: S.of(context).error_email_invalid,
+                ),
               ],
             ),
           ),
           _buildConfirmButton(),
         ],
-      ),
-    );
-  }
-
-  Widget _buildTextForgotPasswordTitle(BuildContext context) {
-    return Text(
-      S.of(context).login_forgot_password_title,
-      style: const TextStyle(
-        fontSize: Dimens.fontSize25,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-
-  Widget _buildTextForgotPasswordPrompt(BuildContext context) {
-    return Text(
-      S.of(context).login_forgot_password_prompt,
-      style: const TextStyle(
-        color: Colors.grey,
-        fontSize: Dimens.fontSize14,
       ),
     );
   }
@@ -88,51 +74,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     );
   }
 
-  Widget _buildEmailTextError(BuildContext context) {
-    return StreamBuilder<bool>(
-      stream: _forgotPasswordForm.emailStream,
-      builder: (context, snapshot) {
-        final isEmailValid = snapshot.data;
-        if (isEmailValid != null) {
-          if (!isEmailValid) {
-            return Column(
-              children: [
-                const SizedBox(height: Dimens.dimen5),
-                Text(
-                  S.of(context).error_email_invalid,
-                  style: const TextStyle(
-                    color: Colors.red,
-                    fontSize: Dimens.fontSize12,
-                  ),
-                ),
-              ],
-            );
-          }
-        }
-        return const SizedBox(height: 0, width: 0);
-      },
-    );
-  }
-
   Widget _buildConfirmButton() {
-    return StreamBuilder<bool>(
-      stream: _forgotPasswordForm.formStream,
-      builder: (context, snapshot) {
-        final isFormValid = snapshot.data;
-        if (isFormValid != null) {
-          if (isFormValid) {
-            return LoginRoundedElevatedButton(
-              text: S.of(context).login_forgot_password_confirm,
-              onClick: () {
-                // TODO: confirm
-              },
-            );
-          }
-        }
-        return LoginRoundedElevatedButton(
-          text: S.of(context).login_forgot_password_confirm,
-          onClick: null,
-        );
+    return LoginRoundedElevatedButton(
+      text: S.of(context).login_forgot_password_confirm,
+      formStream: _forgotPasswordForm.formStream,
+      onClick: () {
+        // TODO: confirm
       },
     );
   }

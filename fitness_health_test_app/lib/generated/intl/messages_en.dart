@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fitness Health Test App"),
         "error": MessageLookupByLibrary.simpleMessage(
             "Something\'s wrong! Please try again"),
+        "error_confirm_password_invalid":
+            MessageLookupByLibrary.simpleMessage("Password must match"),
         "error_email_invalid": MessageLookupByLibrary.simpleMessage(
             "Invalid email! Please enter correct email"),
         "error_password_invalid": MessageLookupByLibrary.simpleMessage(

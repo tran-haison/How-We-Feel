@@ -1,11 +1,15 @@
 import 'package:fitness_health_test_app/generated/l10n.dart';
-import 'package:fitness_health_test_app/ui/common_widgets/login_rounded_elevated_button.dart';
-import 'package:fitness_health_test_app/ui/common_widgets/login_text_form_field.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_rounded_elevated_button.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_content.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_form_field.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_input_error.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_title.dart';
 import 'package:fitness_health_test_app/ui/pages/login/login_page_item.dart';
 import 'package:fitness_health_test_app/ui/pages/login/sign_in/sign_in_form.dart';
 import 'package:fitness_health_test_app/values/dimens.dart';
 import 'package:fitness_health_test_app/view_model/login_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class SignInPage extends StatefulWidget {
@@ -43,14 +47,20 @@ class _SignInPageState extends State<SignInPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildTextWelcomeTitle(context),
-              _buildTextWelcomePrompt(context),
+              LoginTextTitle(title: S.of(context).login_sign_in_welcome_title),
+              LoginTextContent(content: S.of(context).login_sign_in_welcome_prompt),
               const SizedBox(height: Dimens.dimen20),
               _buildUsernameTextFormField(),
-              _buildUsernameTextError(context),
+              LoginTextInputError(
+                streamInput: _signInForm.usernameStream,
+                errorText: S.of(context).error_username_invalid,
+              ),
               const SizedBox(height: Dimens.dimen10),
               _buildPasswordTextFormField(),
-              _buildPasswordTextError(context),
+              LoginTextInputError(
+                streamInput: _signInForm.passwordStream,
+                errorText: S.of(context).error_password_invalid,
+              ),
               _buildForgotPasswordButton(),
               _buildSignInButton(),
             ],
@@ -61,78 +71,6 @@ class _SignInPageState extends State<SignInPage> {
           child: Text(S.of(context).login_sign_in_dont_have_account),
         ),
       ],
-    );
-  }
-
-  Widget _buildTextWelcomeTitle(BuildContext context) {
-    return Text(
-      S.of(context).login_sign_in_welcome_title,
-      style: const TextStyle(
-        fontSize: Dimens.fontSize25,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-
-  Widget _buildTextWelcomePrompt(BuildContext context) {
-    return Text(
-      S.of(context).login_sign_in_welcome_prompt,
-      style: const TextStyle(
-        color: Colors.grey,
-        fontSize: Dimens.fontSize14,
-      ),
-    );
-  }
-
-  Widget _buildUsernameTextError(BuildContext context) {
-    return StreamBuilder<bool>(
-      stream: _signInForm.usernameStream,
-      builder: (context, snapshot) {
-        final isUsernameValid = snapshot.data;
-        if (isUsernameValid != null) {
-          if (!isUsernameValid) {
-            return Column(
-              children: [
-                const SizedBox(height: Dimens.dimen5),
-                Text(
-                  S.of(context).error_username_invalid,
-                  style: const TextStyle(
-                    color: Colors.red,
-                    fontSize: Dimens.fontSize12,
-                  ),
-                ),
-              ],
-            );
-          }
-        }
-        return const SizedBox(height: 0, width: 0);
-      },
-    );
-  }
-
-  Widget _buildPasswordTextError(BuildContext context) {
-    return StreamBuilder<bool>(
-      stream: _signInForm.passwordStream,
-      builder: (context, snapshot) {
-        final isPasswordValid = snapshot.data;
-        if (isPasswordValid != null) {
-          if (!isPasswordValid) {
-            return Column(
-              children: [
-                const SizedBox(height: Dimens.dimen5),
-                Text(
-                  S.of(context).error_password_invalid,
-                  style: const TextStyle(
-                    color: Colors.red,
-                    fontSize: Dimens.fontSize12,
-                  ),
-                ),
-              ],
-            );
-          }
-        }
-        return const SizedBox(height: 0, width: 0);
-      },
     );
   }
 
@@ -172,23 +110,16 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Widget _buildSignInButton() {
-    return StreamBuilder<bool>(
-      stream: _signInForm.formStream,
-      builder: (context, snapshot) {
-        final isFormValid = snapshot.data;
-        if (isFormValid != null) {
-          if (isFormValid) {
-            return LoginRoundedElevatedButton(
-              text: S.of(context).login_sign_in,
-              onClick: () {
-                // TODO: sign in
-              },
-            );
-          }
-        }
-        return LoginRoundedElevatedButton(
-          text: S.of(context).login_sign_in,
-          onClick: null,
+    return LoginRoundedElevatedButton(
+      text: S.of(context).login_sign_in,
+      formStream: _signInForm.formStream,
+      onClick: () {
+        // TODO: sign in
+        Fluttertoast.showToast(
+            msg: "Henlo",
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
         );
       },
     );
