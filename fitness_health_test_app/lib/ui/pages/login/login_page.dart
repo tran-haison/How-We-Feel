@@ -5,7 +5,7 @@ import 'package:fitness_health_test_app/ui/pages/login/login_page_item.dart';
 import 'package:fitness_health_test_app/ui/pages/login/sign_in/sign_in_page.dart';
 import 'package:fitness_health_test_app/ui/pages/login/sign_up/sign_up_page.dart';
 import 'package:fitness_health_test_app/values/dimens.dart';
-import 'package:fitness_health_test_app/view_model/login_view_model.dart';
+import 'package:fitness_health_test_app/view_models/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,34 +17,34 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  late LoginViewModel viewModel;
+  late LoginViewModel _viewModel;
 
   @override
   void initState() {
     // Set first page to be SignInPage
-    viewModel = LoginViewModel();
-    viewModel.setLoginPageItem(LoginPageItem.signIn);
+    _viewModel = LoginViewModel();
+    _viewModel.setLoginPageItem(LoginPageItem.signIn);
 
     super.initState();
   }
 
   @override
   void dispose() {
-    viewModel.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Provider<LoginViewModel>(
-      create: (context) => viewModel,
+      create: (context) => _viewModel,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(Dimens.dimen15),
             child: StreamBuilder<LoginPageItem>(
-              stream: viewModel.loginPageItemStream,
+              stream: _viewModel.loginPageItemStream,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.active) {
                   final pageItem = snapshot.data;

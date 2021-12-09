@@ -39,6 +39,9 @@ dependencies:
   floor: ^1.2.0
   flutter_modular: ^4.2.0
   retrofit: ^3.0.0
+  dio: ^4.0.4
+  json_annotation: ^4.4.0
+  meta: ^1.7.0
   shared_preferences: ^2.0.8
   rxdart: ^0.27.2
 
@@ -50,7 +53,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  retrofit_generator: any
+  freezed: ^1.0.0
+  json_serializable: ^6.1.1
+  retrofit_generator: ^3.0.0+2
+  build_runner: ^2.1.5
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

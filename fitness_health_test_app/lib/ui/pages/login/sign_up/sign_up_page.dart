@@ -6,7 +6,7 @@ import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text
 import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_title.dart';
 import 'package:fitness_health_test_app/ui/pages/login/sign_up/sign_up_form.dart';
 import 'package:fitness_health_test_app/values/dimens.dart';
-import 'package:fitness_health_test_app/view_model/login_view_model.dart';
+import 'package:fitness_health_test_app/view_models/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
