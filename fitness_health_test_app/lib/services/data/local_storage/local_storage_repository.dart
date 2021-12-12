@@ -12,4 +12,9 @@ class LocalStorageRepository {
     List<FitnessTest> fitnessTestList = (resultList as List).map((item) => FitnessTest.fromJson(item)).toList();
     return fitnessTestList;
   }
+
+  /// Singleton instance
+  LocalStorageRepository._privateConstructor();
+  static final LocalStorageRepository _instance = LocalStorageRepository._privateConstructor();
+  factory LocalStorageRepository() => _instance;
 }
