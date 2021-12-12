@@ -220,11 +220,21 @@ class S {
     );
   }
 
-  /// `Something's wrong! Please try again`
+  /// `ERROR`
   String get error {
     return Intl.message(
-      'Something\'s wrong! Please try again',
+      'ERROR',
       name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something's wrong! Please try again`
+  String get error_general {
+    return Intl.message(
+      'Something\'s wrong! Please try again',
+      name: 'error_general',
       desc: '',
       args: [],
     );
@@ -265,6 +275,36 @@ class S {
     return Intl.message(
       'Password must match',
       name: 'error_confirm_password_invalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message(
+      'Loading...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please wait for a sec`
+  String get please_wait_for_a_sec {
+    return Intl.message(
+      'Please wait for a sec',
+      name: 'please_wait_for_a_sec',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
       desc: '',
       args: [],
     );

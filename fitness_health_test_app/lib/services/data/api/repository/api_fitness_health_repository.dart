@@ -1,9 +1,11 @@
-import 'package:dio/dio.dart';
+import 'dart:developer';
+
 import 'package:fitness_health_test_app/services/data/api/fitness_health_api.dart';
 import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
-import 'package:fitness_health_test_app/services/data/repository/base_repository.dart';
 
-abstract class FitnessHealthRepository extends BaseRepository {
+import 'api_base_repository.dart';
+
+abstract class ApiFitnessHealthRepository extends ApiBaseRepository {
   Future<RetrofitResponse<ResultUserRegisterAndLogin>> registerUser(SendUserRegister sendUserRegister);
   Future<RetrofitResponse<ResultUserRegisterAndLogin>> loginUser(SendUserLogin sendUserLogin);
   Future<RetrofitResponse<ResultUserDetail>> getUserDetail(String token);
@@ -11,16 +13,18 @@ abstract class FitnessHealthRepository extends BaseRepository {
   Future<RetrofitResponse<ResultMessage>> updateUserPassword(String token, SendUserUpdatePassword sendUserUpdatePassword);
 }
 
-class FitnessHealthRepositoryImpl extends FitnessHealthRepository {
+class ApiFitnessHealthRepositoryImpl extends ApiFitnessHealthRepository {
 
   FitnessHealthApi get _fitnessHealthApi => FitnessHealthApi(dio);
 
   /// Function to get retrofit response of any type of data
-  RetrofitResponse<T> getRetrofitResponse<T>(Response<T> response) {
-    if (response.data != null) {
-      return RetrofitResponse.success(response.data, response.statusCode, response.statusMessage);
+  RetrofitResponse<T> getRetrofitResponse<T>(T response) {
+    log(response.toString());
+    if (response != null) {
+      return RetrofitResponse.success(response);
+    } else {
+      return const RetrofitResponse.error("Response is null");
     }
-    return RetrofitResponse.error(response.statusMessage, response.statusCode);
   }
 
   /// User APIs
@@ -72,4 +76,8 @@ class FitnessHealthRepositoryImpl extends FitnessHealthRepository {
 
   /****************************************************************************/
 
+  /// Singleton instance
+  ApiFitnessHealthRepositoryImpl._privateConstructor();
+  static final ApiFitnessHealthRepositoryImpl _instance = ApiFitnessHealthRepositoryImpl._privateConstructor();
+  factory ApiFitnessHealthRepositoryImpl() => _instance;
 }

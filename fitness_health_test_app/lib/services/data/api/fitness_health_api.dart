@@ -13,19 +13,19 @@ abstract class FitnessHealthApi {
   /// User APIs
 
   @POST("$WORK_API/user/register")
-  Future<Response<ResultUserRegisterAndLogin>> registerUser(@Body() SendUserRegister sendUserRegister);
+  Future<ResultUserRegisterAndLogin> registerUser(@Body() SendUserRegister sendUserRegister);
 
   @POST("$WORK_API/user/login")
-  Future<Response<ResultUserRegisterAndLogin>> loginUser(@Body() SendUserLogin sendUserLogin);
+  Future<ResultUserRegisterAndLogin> loginUser(@Body() SendUserLogin sendUserLogin);
 
   @GET("$WORK_API/user/detail")
-  Future<Response<ResultUserDetail>> getUserDetail(@Header("Authorization") String token);
+  Future<ResultUserDetail> getUserDetail(@Header("Authorization") String token);
 
   @PUT("$WORK_API/user/detail/update")
-  Future<Response<ResultUserUpdateInfo>> updateUserInfo(@Header("Authorization") String token, @Body() SendUserUpdateInfo sendUserUpdateInfo);
+  Future<ResultUserUpdateInfo> updateUserInfo(@Header("Authorization") String token, @Body() SendUserUpdateInfo sendUserUpdateInfo);
 
   @PUT("$WORK_API/user/update_password")
-  Future<Response<ResultMessage>> updateUserPassword(@Header("Authorization") String token, @Body() SendUserUpdatePassword sendUserUpdatePassword);
+  Future<ResultMessage> updateUserPassword(@Header("Authorization") String token, @Body() SendUserUpdatePassword sendUserUpdatePassword);
 
   /****************************************************************************/
 }

@@ -6,8 +6,11 @@ import 'package:rxdart/rxdart.dart';
 class SignUpForm {
 
   final _signUpModel = SignUpModel();
-  var _password = "";
-  var _confirmPassword = "";
+
+  var username = "";
+  var email = "";
+  var password = "";
+  var confirmPassword = "";
 
   // Stream controllers
   final StreamController<bool> _usernameController = BehaviorSubject();
@@ -25,22 +28,24 @@ class SignUpForm {
 
   // On value changed
   void onUsernameChanged(String username) {
+    this.username = username;
     _usernameController.sink.add(_signUpModel.checkUsername(username));
     _onFormChecked();
   }
   void onEmailChanged(String email) {
+    this.email = email;
     _emailController.sink.add(_signUpModel.checkEmail(email));
     _onFormChecked();
   }
   void onPasswordChanged(String password) {
-    _password = password;
+    this.password = password;
     _passwordController.sink.add(_signUpModel.checkPassword(password));
-    _confirmPasswordController.sink.add(_signUpModel.checkConfirmPassword(_confirmPassword, _password));
+    _confirmPasswordController.sink.add(_signUpModel.checkConfirmPassword(confirmPassword, password));
     _onFormChecked();
   }
   void onConfirmPasswordChanged(String confirmPassword) {
-    _confirmPassword = confirmPassword;
-    _confirmPasswordController.sink.add(_signUpModel.checkConfirmPassword(_confirmPassword, _password));
+    this.confirmPassword = confirmPassword;
+    _confirmPasswordController.sink.add(_signUpModel.checkConfirmPassword(confirmPassword, password));
     _onFormChecked();
   }
   void _onFormChecked() {

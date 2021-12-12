@@ -1,4 +1,10 @@
+import 'dart:developer';
+
 import 'package:fitness_health_test_app/generated/l10n.dart';
+import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/dialogs/base_alert_dialog.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/dialogs/exception_alert_dialog.dart';
+import 'package:fitness_health_test_app/ui/common_widgets/dialogs/loading_alert_dialog.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_rounded_elevated_button.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_content.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_form_field.dart';
@@ -9,7 +15,6 @@ import 'package:fitness_health_test_app/ui/pages/login/sign_in/sign_in_form.dart
 import 'package:fitness_health_test_app/values/dimens.dart';
 import 'package:fitness_health_test_app/view_models/login_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class SignInPage extends StatefulWidget {
@@ -113,14 +118,57 @@ class _SignInPageState extends State<SignInPage> {
     return LoginRoundedElevatedButton(
       text: S.of(context).login_sign_in,
       formStream: _signInForm.formStream,
-      onClick: () {
-        // TODO: sign in
-        Fluttertoast.showToast(
-            msg: "Henlo",
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0
+      onClick: loginUser,
+    );
+  }
+
+  Future<void> loginUser() async {
+    // Show loading dialog
+    final loadingDialog = LoadingAlertDialog(context: context);
+    showAlertDialog(context, loadingDialog);
+
+    try {
+      // Wait for login user
+      final response = await _viewModel.loginUser(_signInForm.username, _signInForm.password);
+
+      // Dismiss loading dialog
+      Navigator.of(context).pop();
+
+      // Handle response from backend
+      _handleResponse(response);
+    } on Exception catch(e) {
+      // Dismiss loading dialog
+      Navigator.of(context).pop();
+      log(e.toString());
+
+      // Show exception dialog
+      final exceptionAlertDialog = ExceptionAlertDialog(
+        context: context,
+        exception: e.toString(),
+      );
+      showAlertDialog(context, exceptionAlertDialog);
+    }
+  }
+
+  void _handleResponse(RetrofitResponse response) {
+    response.when(
+      success: (data) {
+        // TODO: save user info to shared preferences and login
+        final successDialog = BaseAlertDialog(
+          context: context,
+          title: "Success",
+          content: data.toString(),
+          defaultActionText: "OK",
         );
+        showAlertDialog(context, successDialog);
+      },
+      error: (errorMessage) {
+        // Show exception dialog
+        final exceptionAlertDialog = ExceptionAlertDialog(
+          context: context,
+          exception: errorMessage ?? S.of(context).error_general,
+        );
+        showAlertDialog(context, exceptionAlertDialog);
       },
     );
   }

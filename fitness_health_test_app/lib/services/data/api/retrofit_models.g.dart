@@ -62,8 +62,8 @@ Map<String, dynamic> _$$_SendUserUpdatePasswordToJson(
 
 _$_ResultMessage _$$_ResultMessageFromJson(Map<String, dynamic> json) =>
     _$_ResultMessage(
-      response: json['response'] as String,
-      message: json['message'] as String,
+      response: json['response'] as String?,
+      message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$$_ResultMessageToJson(_$_ResultMessage instance) =>
@@ -75,12 +75,12 @@ Map<String, dynamic> _$$_ResultMessageToJson(_$_ResultMessage instance) =>
 _$_ResultUserRegisterAndLogin _$$_ResultUserRegisterAndLoginFromJson(
         Map<String, dynamic> json) =>
     _$_ResultUserRegisterAndLogin(
-      response: json['response'] as String,
-      message: json['message'] as String,
-      pk: json['pk'] as int,
-      email: json['email'] as String,
-      username: json['username'] as String,
-      token: json['token'] as String,
+      response: json['response'] as String?,
+      message: json['message'] as String?,
+      pk: json['pk'] as int?,
+      email: json['email'] as String?,
+      username: json['username'] as String?,
+      token: json['token'] as String?,
     );
 
 Map<String, dynamic> _$$_ResultUserRegisterAndLoginToJson(
@@ -97,11 +97,11 @@ Map<String, dynamic> _$$_ResultUserRegisterAndLoginToJson(
 _$_ResultUserUpdateInfo _$$_ResultUserUpdateInfoFromJson(
         Map<String, dynamic> json) =>
     _$_ResultUserUpdateInfo(
-      response: json['response'] as String,
-      message: json['message'] as String,
-      pk: json['pk'] as int,
-      email: json['email'] as String,
-      username: json['username'] as String,
+      response: json['response'] as String?,
+      message: json['message'] as String?,
+      pk: json['pk'] as int?,
+      email: json['email'] as String?,
+      username: json['username'] as String?,
     );
 
 Map<String, dynamic> _$$_ResultUserUpdateInfoToJson(
@@ -116,9 +116,10 @@ Map<String, dynamic> _$$_ResultUserUpdateInfoToJson(
 
 _$_ResultUserDetail _$$_ResultUserDetailFromJson(Map<String, dynamic> json) =>
     _$_ResultUserDetail(
-      pk: json['pk'] as int,
-      email: json['email'] as String,
-      username: json['username'] as String,
+      pk: json['pk'] as int?,
+      email: json['email'] as String?,
+      username: json['username'] as String?,
+      detail: json['detail'] as String?,
     );
 
 Map<String, dynamic> _$$_ResultUserDetailToJson(_$_ResultUserDetail instance) =>
@@ -126,4 +127,5 @@ Map<String, dynamic> _$$_ResultUserDetailToJson(_$_ResultUserDetail instance) =>
       'pk': instance.pk,
       'email': instance.email,
       'username': instance.username,
+      'detail': instance.detail,
     };

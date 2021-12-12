@@ -24,16 +24,19 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_name":
             MessageLookupByLibrary.simpleMessage("Fitness Health Test App"),
-        "error": MessageLookupByLibrary.simpleMessage(
-            "Something\'s wrong! Please try again"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "error": MessageLookupByLibrary.simpleMessage("ERROR"),
         "error_confirm_password_invalid":
             MessageLookupByLibrary.simpleMessage("Password must match"),
         "error_email_invalid": MessageLookupByLibrary.simpleMessage(
             "Invalid email! Please enter correct email"),
+        "error_general": MessageLookupByLibrary.simpleMessage(
+            "Something\'s wrong! Please try again"),
         "error_password_invalid": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters with 1 UPPERCASE, 1 LOWERCASE, 1 NUMBER, 1 SPECIAL CHARACTER"),
         "error_username_invalid":
             MessageLookupByLibrary.simpleMessage("Username cannot be empty"),
+        "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "login_confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "login_email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -61,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Register a new account to start your journey with us"),
         "login_sign_up_welcome_title":
             MessageLookupByLibrary.simpleMessage("Welcome,"),
-        "login_username": MessageLookupByLibrary.simpleMessage("Username")
+        "login_username": MessageLookupByLibrary.simpleMessage("Username"),
+        "please_wait_for_a_sec":
+            MessageLookupByLibrary.simpleMessage("Please wait for a sec")
       };
 }

@@ -17,18 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RetrofitResponseTearOff {
   const _$RetrofitResponseTearOff();
 
-  _Success<T> success<T>(T? data, int? code, String? message) {
+  _Success<T> success<T>(T? data) {
     return _Success<T>(
       data,
-      code,
-      message,
     );
   }
 
-  _Error<T> error<T>(String? errorMessage, int? code) {
+  _Error<T> error<T>(String? errorMessage) {
     return _Error<T>(
       errorMessage,
-      code,
     );
   }
 }
@@ -38,24 +35,22 @@ const $RetrofitResponse = _$RetrofitResponseTearOff();
 
 /// @nodoc
 mixin _$RetrofitResponse<T> {
-  int? get code => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T? data, int? code, String? message) success,
-    required TResult Function(String? errorMessage, int? code) error,
+    required TResult Function(T? data) success,
+    required TResult Function(String? errorMessage) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? data, int? code, String? message)? success,
-    TResult Function(String? errorMessage, int? code)? error,
+    TResult Function(T? data)? success,
+    TResult Function(String? errorMessage)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T? data, int? code, String? message)? success,
-    TResult Function(String? errorMessage, int? code)? error,
+    TResult Function(T? data)? success,
+    TResult Function(String? errorMessage)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,10 +73,6 @@ mixin _$RetrofitResponse<T> {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $RetrofitResponseCopyWith<T, RetrofitResponse<T>> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -89,7 +80,6 @@ abstract class $RetrofitResponseCopyWith<T, $Res> {
   factory $RetrofitResponseCopyWith(
           RetrofitResponse<T> value, $Res Function(RetrofitResponse<T>) then) =
       _$RetrofitResponseCopyWithImpl<T, $Res>;
-  $Res call({int? code});
 }
 
 /// @nodoc
@@ -100,28 +90,14 @@ class _$RetrofitResponseCopyWithImpl<T, $Res>
   final RetrofitResponse<T> _value;
   // ignore: unused_field
   final $Res Function(RetrofitResponse<T>) _then;
-
-  @override
-  $Res call({
-    Object? code = freezed,
-  }) {
-    return _then(_value.copyWith(
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$SuccessCopyWith<T, $Res>
-    implements $RetrofitResponseCopyWith<T, $Res> {
+abstract class _$SuccessCopyWith<T, $Res> {
   factory _$SuccessCopyWith(
           _Success<T> value, $Res Function(_Success<T>) then) =
       __$SuccessCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T? data, int? code, String? message});
+  $Res call({T? data});
 }
 
 /// @nodoc
@@ -137,41 +113,35 @@ class __$SuccessCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? code = freezed,
-    Object? message = freezed,
   }) {
     return _then(_Success<T>(
       data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as T?,
-      code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-      message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Success<T> implements _Success<T> {
-  const _$_Success(this.data, this.code, this.message);
+class _$_Success<T> with DiagnosticableTreeMixin implements _Success<T> {
+  const _$_Success(this.data);
 
   @override
   final T? data;
-  @override
-  final int? code;
-  @override
-  final String? message;
 
   @override
-  String toString() {
-    return 'RetrofitResponse<$T>.success(data: $data, code: $code, message: $message)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RetrofitResponse<$T>.success(data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RetrofitResponse<$T>.success'))
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -179,14 +149,12 @@ class _$_Success<T> implements _Success<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Success<T> &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(data), code, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -196,30 +164,30 @@ class _$_Success<T> implements _Success<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T? data, int? code, String? message) success,
-    required TResult Function(String? errorMessage, int? code) error,
+    required TResult Function(T? data) success,
+    required TResult Function(String? errorMessage) error,
   }) {
-    return success(data, code, message);
+    return success(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? data, int? code, String? message)? success,
-    TResult Function(String? errorMessage, int? code)? error,
+    TResult Function(T? data)? success,
+    TResult Function(String? errorMessage)? error,
   }) {
-    return success?.call(data, code, message);
+    return success?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T? data, int? code, String? message)? success,
-    TResult Function(String? errorMessage, int? code)? error,
+    TResult Function(T? data)? success,
+    TResult Function(String? errorMessage)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data, code, message);
+      return success(data);
     }
     return orElse();
   }
@@ -257,25 +225,19 @@ class _$_Success<T> implements _Success<T> {
 }
 
 abstract class _Success<T> implements RetrofitResponse<T> {
-  const factory _Success(T? data, int? code, String? message) = _$_Success<T>;
+  const factory _Success(T? data) = _$_Success<T>;
 
   T? get data;
-  @override
-  int? get code;
-  String? get message;
-  @override
   @JsonKey(ignore: true)
   _$SuccessCopyWith<T, _Success<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ErrorCopyWith<T, $Res>
-    implements $RetrofitResponseCopyWith<T, $Res> {
+abstract class _$ErrorCopyWith<T, $Res> {
   factory _$ErrorCopyWith(_Error<T> value, $Res Function(_Error<T>) then) =
       __$ErrorCopyWithImpl<T, $Res>;
-  @override
-  $Res call({String? errorMessage, int? code});
+  $Res call({String? errorMessage});
 }
 
 /// @nodoc
@@ -291,34 +253,35 @@ class __$ErrorCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? errorMessage = freezed,
-    Object? code = freezed,
   }) {
     return _then(_Error<T>(
       errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Error<T> implements _Error<T> {
-  const _$_Error(this.errorMessage, this.code);
+class _$_Error<T> with DiagnosticableTreeMixin implements _Error<T> {
+  const _$_Error(this.errorMessage);
 
   @override
   final String? errorMessage;
-  @override
-  final int? code;
 
   @override
-  String toString() {
-    return 'RetrofitResponse<$T>.error(errorMessage: $errorMessage, code: $code)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RetrofitResponse<$T>.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RetrofitResponse<$T>.error'))
+      ..add(DiagnosticsProperty('errorMessage', errorMessage));
   }
 
   @override
@@ -327,12 +290,11 @@ class _$_Error<T> implements _Error<T> {
         (other.runtimeType == runtimeType &&
             other is _Error<T> &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
-            (identical(other.code, code) || other.code == code));
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage, code);
+  int get hashCode => Object.hash(runtimeType, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -342,30 +304,30 @@ class _$_Error<T> implements _Error<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T? data, int? code, String? message) success,
-    required TResult Function(String? errorMessage, int? code) error,
+    required TResult Function(T? data) success,
+    required TResult Function(String? errorMessage) error,
   }) {
-    return error(errorMessage, code);
+    return error(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T? data, int? code, String? message)? success,
-    TResult Function(String? errorMessage, int? code)? error,
+    TResult Function(T? data)? success,
+    TResult Function(String? errorMessage)? error,
   }) {
-    return error?.call(errorMessage, code);
+    return error?.call(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T? data, int? code, String? message)? success,
-    TResult Function(String? errorMessage, int? code)? error,
+    TResult Function(T? data)? success,
+    TResult Function(String? errorMessage)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(errorMessage, code);
+      return error(errorMessage);
     }
     return orElse();
   }
@@ -403,12 +365,9 @@ class _$_Error<T> implements _Error<T> {
 }
 
 abstract class _Error<T> implements RetrofitResponse<T> {
-  const factory _Error(String? errorMessage, int? code) = _$_Error<T>;
+  const factory _Error(String? errorMessage) = _$_Error<T>;
 
   String? get errorMessage;
-  @override
-  int? get code;
-  @override
   @JsonKey(ignore: true)
   _$ErrorCopyWith<T, _Error<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -539,7 +498,9 @@ class __$SendUserRegisterCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SendUserRegister implements _SendUserRegister {
+class _$_SendUserRegister
+    with DiagnosticableTreeMixin
+    implements _SendUserRegister {
   const _$_SendUserRegister(
       {required this.email, required this.username, required this.password});
 
@@ -554,8 +515,18 @@ class _$_SendUserRegister implements _SendUserRegister {
   final String password;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SendUserRegister(email: $email, username: $username, password: $password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SendUserRegister'))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('password', password));
   }
 
   @override
@@ -715,7 +686,7 @@ class __$SendUserLoginCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SendUserLogin implements _SendUserLogin {
+class _$_SendUserLogin with DiagnosticableTreeMixin implements _SendUserLogin {
   const _$_SendUserLogin({required this.username, required this.password});
 
   factory _$_SendUserLogin.fromJson(Map<String, dynamic> json) =>
@@ -727,8 +698,17 @@ class _$_SendUserLogin implements _SendUserLogin {
   final String password;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SendUserLogin(username: $username, password: $password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SendUserLogin'))
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('password', password));
   }
 
   @override
@@ -883,7 +863,9 @@ class __$SendUserUpdateInfoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SendUserUpdateInfo implements _SendUserUpdateInfo {
+class _$_SendUserUpdateInfo
+    with DiagnosticableTreeMixin
+    implements _SendUserUpdateInfo {
   const _$_SendUserUpdateInfo({required this.email, required this.username});
 
   factory _$_SendUserUpdateInfo.fromJson(Map<String, dynamic> json) =>
@@ -895,8 +877,17 @@ class _$_SendUserUpdateInfo implements _SendUserUpdateInfo {
   final String username;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SendUserUpdateInfo(email: $email, username: $username)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SendUserUpdateInfo'))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('username', username));
   }
 
   @override
@@ -1053,7 +1044,9 @@ class __$SendUserUpdatePasswordCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SendUserUpdatePassword implements _SendUserUpdatePassword {
+class _$_SendUserUpdatePassword
+    with DiagnosticableTreeMixin
+    implements _SendUserUpdatePassword {
   const _$_SendUserUpdatePassword(
       {required this.old_password, required this.new_password});
 
@@ -1066,8 +1059,17 @@ class _$_SendUserUpdatePassword implements _SendUserUpdatePassword {
   final String new_password;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SendUserUpdatePassword(old_password: $old_password, new_password: $new_password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SendUserUpdatePassword'))
+      ..add(DiagnosticsProperty('old_password', old_password))
+      ..add(DiagnosticsProperty('new_password', new_password));
   }
 
   @override
@@ -1122,7 +1124,7 @@ ResultMessage _$ResultMessageFromJson(Map<String, dynamic> json) {
 class _$ResultMessageTearOff {
   const _$ResultMessageTearOff();
 
-  _ResultMessage call({required String response, required String message}) {
+  _ResultMessage call({String? response, String? message}) {
     return _ResultMessage(
       response: response,
       message: message,
@@ -1139,8 +1141,8 @@ const $ResultMessage = _$ResultMessageTearOff();
 
 /// @nodoc
 mixin _$ResultMessage {
-  String get response => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
+  String? get response => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1153,7 +1155,7 @@ abstract class $ResultMessageCopyWith<$Res> {
   factory $ResultMessageCopyWith(
           ResultMessage value, $Res Function(ResultMessage) then) =
       _$ResultMessageCopyWithImpl<$Res>;
-  $Res call({String response, String message});
+  $Res call({String? response, String? message});
 }
 
 /// @nodoc
@@ -1174,11 +1176,11 @@ class _$ResultMessageCopyWithImpl<$Res>
       response: response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1190,7 +1192,7 @@ abstract class _$ResultMessageCopyWith<$Res>
           _ResultMessage value, $Res Function(_ResultMessage) then) =
       __$ResultMessageCopyWithImpl<$Res>;
   @override
-  $Res call({String response, String message});
+  $Res call({String? response, String? message});
 }
 
 /// @nodoc
@@ -1213,31 +1215,40 @@ class __$ResultMessageCopyWithImpl<$Res>
       response: response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ResultMessage implements _ResultMessage {
-  const _$_ResultMessage({required this.response, required this.message});
+class _$_ResultMessage with DiagnosticableTreeMixin implements _ResultMessage {
+  const _$_ResultMessage({this.response, this.message});
 
   factory _$_ResultMessage.fromJson(Map<String, dynamic> json) =>
       _$$_ResultMessageFromJson(json);
 
   @override
-  final String response;
+  final String? response;
   @override
-  final String message;
+  final String? message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ResultMessage(response: $response, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultMessage'))
+      ..add(DiagnosticsProperty('response', response))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -1265,16 +1276,16 @@ class _$_ResultMessage implements _ResultMessage {
 }
 
 abstract class _ResultMessage implements ResultMessage {
-  const factory _ResultMessage(
-      {required String response, required String message}) = _$_ResultMessage;
+  const factory _ResultMessage({String? response, String? message}) =
+      _$_ResultMessage;
 
   factory _ResultMessage.fromJson(Map<String, dynamic> json) =
       _$_ResultMessage.fromJson;
 
   @override
-  String get response;
+  String? get response;
   @override
-  String get message;
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$ResultMessageCopyWith<_ResultMessage> get copyWith =>
@@ -1291,12 +1302,12 @@ class _$ResultUserRegisterAndLoginTearOff {
   const _$ResultUserRegisterAndLoginTearOff();
 
   _ResultUserRegisterAndLogin call(
-      {required String response,
-      required String message,
-      required int pk,
-      required String email,
-      required String username,
-      required String token}) {
+      {String? response,
+      String? message,
+      int? pk,
+      String? email,
+      String? username,
+      String? token}) {
     return _ResultUserRegisterAndLogin(
       response: response,
       message: message,
@@ -1317,12 +1328,12 @@ const $ResultUserRegisterAndLogin = _$ResultUserRegisterAndLoginTearOff();
 
 /// @nodoc
 mixin _$ResultUserRegisterAndLogin {
-  String get response => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  int get pk => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  String get token => throw _privateConstructorUsedError;
+  String? get response => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
+  int? get pk => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1336,12 +1347,12 @@ abstract class $ResultUserRegisterAndLoginCopyWith<$Res> {
           $Res Function(ResultUserRegisterAndLogin) then) =
       _$ResultUserRegisterAndLoginCopyWithImpl<$Res>;
   $Res call(
-      {String response,
-      String message,
-      int pk,
-      String email,
-      String username,
-      String token});
+      {String? response,
+      String? message,
+      int? pk,
+      String? email,
+      String? username,
+      String? token});
 }
 
 /// @nodoc
@@ -1366,27 +1377,27 @@ class _$ResultUserRegisterAndLoginCopyWithImpl<$Res>
       response: response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pk: pk == freezed
           ? _value.pk
           : pk // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       token: token == freezed
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1400,12 +1411,12 @@ abstract class _$ResultUserRegisterAndLoginCopyWith<$Res>
       __$ResultUserRegisterAndLoginCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String response,
-      String message,
-      int pk,
-      String email,
-      String username,
-      String token});
+      {String? response,
+      String? message,
+      int? pk,
+      String? email,
+      String? username,
+      String? token});
 }
 
 /// @nodoc
@@ -1433,61 +1444,76 @@ class __$ResultUserRegisterAndLoginCopyWithImpl<$Res>
       response: response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pk: pk == freezed
           ? _value.pk
           : pk // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       token: token == freezed
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ResultUserRegisterAndLogin implements _ResultUserRegisterAndLogin {
+class _$_ResultUserRegisterAndLogin
+    with DiagnosticableTreeMixin
+    implements _ResultUserRegisterAndLogin {
   const _$_ResultUserRegisterAndLogin(
-      {required this.response,
-      required this.message,
-      required this.pk,
-      required this.email,
-      required this.username,
-      required this.token});
+      {this.response,
+      this.message,
+      this.pk,
+      this.email,
+      this.username,
+      this.token});
 
   factory _$_ResultUserRegisterAndLogin.fromJson(Map<String, dynamic> json) =>
       _$$_ResultUserRegisterAndLoginFromJson(json);
 
   @override
-  final String response;
+  final String? response;
   @override
-  final String message;
+  final String? message;
   @override
-  final int pk;
+  final int? pk;
   @override
-  final String email;
+  final String? email;
   @override
-  final String username;
+  final String? username;
   @override
-  final String token;
+  final String? token;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ResultUserRegisterAndLogin(response: $response, message: $message, pk: $pk, email: $email, username: $username, token: $token)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultUserRegisterAndLogin'))
+      ..add(DiagnosticsProperty('response', response))
+      ..add(DiagnosticsProperty('message', message))
+      ..add(DiagnosticsProperty('pk', pk))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('token', token));
   }
 
   @override
@@ -1524,28 +1550,28 @@ class _$_ResultUserRegisterAndLogin implements _ResultUserRegisterAndLogin {
 abstract class _ResultUserRegisterAndLogin
     implements ResultUserRegisterAndLogin {
   const factory _ResultUserRegisterAndLogin(
-      {required String response,
-      required String message,
-      required int pk,
-      required String email,
-      required String username,
-      required String token}) = _$_ResultUserRegisterAndLogin;
+      {String? response,
+      String? message,
+      int? pk,
+      String? email,
+      String? username,
+      String? token}) = _$_ResultUserRegisterAndLogin;
 
   factory _ResultUserRegisterAndLogin.fromJson(Map<String, dynamic> json) =
       _$_ResultUserRegisterAndLogin.fromJson;
 
   @override
-  String get response;
+  String? get response;
   @override
-  String get message;
+  String? get message;
   @override
-  int get pk;
+  int? get pk;
   @override
-  String get email;
+  String? get email;
   @override
-  String get username;
+  String? get username;
   @override
-  String get token;
+  String? get token;
   @override
   @JsonKey(ignore: true)
   _$ResultUserRegisterAndLoginCopyWith<_ResultUserRegisterAndLogin>
@@ -1561,11 +1587,11 @@ class _$ResultUserUpdateInfoTearOff {
   const _$ResultUserUpdateInfoTearOff();
 
   _ResultUserUpdateInfo call(
-      {required String response,
-      required String message,
-      required int pk,
-      required String email,
-      required String username}) {
+      {String? response,
+      String? message,
+      int? pk,
+      String? email,
+      String? username}) {
     return _ResultUserUpdateInfo(
       response: response,
       message: message,
@@ -1585,11 +1611,11 @@ const $ResultUserUpdateInfo = _$ResultUserUpdateInfoTearOff();
 
 /// @nodoc
 mixin _$ResultUserUpdateInfo {
-  String get response => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  int get pk => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
+  String? get response => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
+  int? get pk => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1603,7 +1629,11 @@ abstract class $ResultUserUpdateInfoCopyWith<$Res> {
           $Res Function(ResultUserUpdateInfo) then) =
       _$ResultUserUpdateInfoCopyWithImpl<$Res>;
   $Res call(
-      {String response, String message, int pk, String email, String username});
+      {String? response,
+      String? message,
+      int? pk,
+      String? email,
+      String? username});
 }
 
 /// @nodoc
@@ -1627,23 +1657,23 @@ class _$ResultUserUpdateInfoCopyWithImpl<$Res>
       response: response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pk: pk == freezed
           ? _value.pk
           : pk // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1656,7 +1686,11 @@ abstract class _$ResultUserUpdateInfoCopyWith<$Res>
       __$ResultUserUpdateInfoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String response, String message, int pk, String email, String username});
+      {String? response,
+      String? message,
+      int? pk,
+      String? email,
+      String? username});
 }
 
 /// @nodoc
@@ -1682,54 +1716,64 @@ class __$ResultUserUpdateInfoCopyWithImpl<$Res>
       response: response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pk: pk == freezed
           ? _value.pk
           : pk // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ResultUserUpdateInfo implements _ResultUserUpdateInfo {
+class _$_ResultUserUpdateInfo
+    with DiagnosticableTreeMixin
+    implements _ResultUserUpdateInfo {
   const _$_ResultUserUpdateInfo(
-      {required this.response,
-      required this.message,
-      required this.pk,
-      required this.email,
-      required this.username});
+      {this.response, this.message, this.pk, this.email, this.username});
 
   factory _$_ResultUserUpdateInfo.fromJson(Map<String, dynamic> json) =>
       _$$_ResultUserUpdateInfoFromJson(json);
 
   @override
-  final String response;
+  final String? response;
   @override
-  final String message;
+  final String? message;
   @override
-  final int pk;
+  final int? pk;
   @override
-  final String email;
+  final String? email;
   @override
-  final String username;
+  final String? username;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ResultUserUpdateInfo(response: $response, message: $message, pk: $pk, email: $email, username: $username)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultUserUpdateInfo'))
+      ..add(DiagnosticsProperty('response', response))
+      ..add(DiagnosticsProperty('message', message))
+      ..add(DiagnosticsProperty('pk', pk))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('username', username));
   }
 
   @override
@@ -1764,25 +1808,25 @@ class _$_ResultUserUpdateInfo implements _ResultUserUpdateInfo {
 
 abstract class _ResultUserUpdateInfo implements ResultUserUpdateInfo {
   const factory _ResultUserUpdateInfo(
-      {required String response,
-      required String message,
-      required int pk,
-      required String email,
-      required String username}) = _$_ResultUserUpdateInfo;
+      {String? response,
+      String? message,
+      int? pk,
+      String? email,
+      String? username}) = _$_ResultUserUpdateInfo;
 
   factory _ResultUserUpdateInfo.fromJson(Map<String, dynamic> json) =
       _$_ResultUserUpdateInfo.fromJson;
 
   @override
-  String get response;
+  String? get response;
   @override
-  String get message;
+  String? get message;
   @override
-  int get pk;
+  int? get pk;
   @override
-  String get email;
+  String? get email;
   @override
-  String get username;
+  String? get username;
   @override
   @JsonKey(ignore: true)
   _$ResultUserUpdateInfoCopyWith<_ResultUserUpdateInfo> get copyWith =>
@@ -1798,11 +1842,12 @@ class _$ResultUserDetailTearOff {
   const _$ResultUserDetailTearOff();
 
   _ResultUserDetail call(
-      {required int pk, required String email, required String username}) {
+      {int? pk, String? email, String? username, String? detail}) {
     return _ResultUserDetail(
       pk: pk,
       email: email,
       username: username,
+      detail: detail,
     );
   }
 
@@ -1816,9 +1861,10 @@ const $ResultUserDetail = _$ResultUserDetailTearOff();
 
 /// @nodoc
 mixin _$ResultUserDetail {
-  int get pk => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
+  int? get pk => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get detail => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1831,7 +1877,7 @@ abstract class $ResultUserDetailCopyWith<$Res> {
   factory $ResultUserDetailCopyWith(
           ResultUserDetail value, $Res Function(ResultUserDetail) then) =
       _$ResultUserDetailCopyWithImpl<$Res>;
-  $Res call({int pk, String email, String username});
+  $Res call({int? pk, String? email, String? username, String? detail});
 }
 
 /// @nodoc
@@ -1848,20 +1894,25 @@ class _$ResultUserDetailCopyWithImpl<$Res>
     Object? pk = freezed,
     Object? email = freezed,
     Object? username = freezed,
+    Object? detail = freezed,
   }) {
     return _then(_value.copyWith(
       pk: pk == freezed
           ? _value.pk
           : pk // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      detail: detail == freezed
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1873,7 +1924,7 @@ abstract class _$ResultUserDetailCopyWith<$Res>
           _ResultUserDetail value, $Res Function(_ResultUserDetail) then) =
       __$ResultUserDetailCopyWithImpl<$Res>;
   @override
-  $Res call({int pk, String email, String username});
+  $Res call({int? pk, String? email, String? username, String? detail});
 }
 
 /// @nodoc
@@ -1892,43 +1943,62 @@ class __$ResultUserDetailCopyWithImpl<$Res>
     Object? pk = freezed,
     Object? email = freezed,
     Object? username = freezed,
+    Object? detail = freezed,
   }) {
     return _then(_ResultUserDetail(
       pk: pk == freezed
           ? _value.pk
           : pk // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      detail: detail == freezed
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ResultUserDetail implements _ResultUserDetail {
-  const _$_ResultUserDetail(
-      {required this.pk, required this.email, required this.username});
+class _$_ResultUserDetail
+    with DiagnosticableTreeMixin
+    implements _ResultUserDetail {
+  const _$_ResultUserDetail({this.pk, this.email, this.username, this.detail});
 
   factory _$_ResultUserDetail.fromJson(Map<String, dynamic> json) =>
       _$$_ResultUserDetailFromJson(json);
 
   @override
-  final int pk;
+  final int? pk;
   @override
-  final String email;
+  final String? email;
   @override
-  final String username;
+  final String? username;
+  @override
+  final String? detail;
 
   @override
-  String toString() {
-    return 'ResultUserDetail(pk: $pk, email: $email, username: $username)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultUserDetail(pk: $pk, email: $email, username: $username, detail: $detail)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultUserDetail'))
+      ..add(DiagnosticsProperty('pk', pk))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('username', username))
+      ..add(DiagnosticsProperty('detail', detail));
   }
 
   @override
@@ -1939,11 +2009,12 @@ class _$_ResultUserDetail implements _ResultUserDetail {
             (identical(other.pk, pk) || other.pk == pk) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.username, username) ||
-                other.username == username));
+                other.username == username) &&
+            (identical(other.detail, detail) || other.detail == detail));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pk, email, username);
+  int get hashCode => Object.hash(runtimeType, pk, email, username, detail);
 
   @JsonKey(ignore: true)
   @override
@@ -1958,19 +2029,22 @@ class _$_ResultUserDetail implements _ResultUserDetail {
 
 abstract class _ResultUserDetail implements ResultUserDetail {
   const factory _ResultUserDetail(
-      {required int pk,
-      required String email,
-      required String username}) = _$_ResultUserDetail;
+      {int? pk,
+      String? email,
+      String? username,
+      String? detail}) = _$_ResultUserDetail;
 
   factory _ResultUserDetail.fromJson(Map<String, dynamic> json) =
       _$_ResultUserDetail.fromJson;
 
   @override
-  int get pk;
+  int? get pk;
   @override
-  String get email;
+  String? get email;
   @override
-  String get username;
+  String? get username;
+  @override
+  String? get detail;
   @override
   @JsonKey(ignore: true)
   _$ResultUserDetailCopyWith<_ResultUserDetail> get copyWith =>

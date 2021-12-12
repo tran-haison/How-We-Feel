@@ -7,6 +7,9 @@ class SignInForm {
 
   final _signInModel = SignInModel();
 
+  var username = "";
+  var password = "";
+
   // Stream controllers
   final StreamController<bool> _usernameController = BehaviorSubject();
   final StreamController<bool> _passwordController = BehaviorSubject();
@@ -19,10 +22,12 @@ class SignInForm {
 
   // On value changed
   void onUsernameChanged(String username) {
+    this.username = username;
     _usernameController.sink.add(_signInModel.checkUsername(username));
     _onFormChecked();
   }
   void onPasswordChanged(String password) {
+    this.password = password;
     _passwordController.sink.add(_signInModel.checkPassword(password));
     _onFormChecked();
   }

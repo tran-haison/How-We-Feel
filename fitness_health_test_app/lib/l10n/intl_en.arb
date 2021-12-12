@@ -18,9 +18,14 @@
   "login_password": "Password",
   "login_confirm_password": "Confirm password",
 
-  "error": "Something's wrong! Please try again",
+  "error": "ERROR",
+  "error_general": "Something's wrong! Please try again",
   "error_email_invalid": "Invalid email! Please enter correct email",
   "error_username_invalid": "Username cannot be empty",
   "error_password_invalid": "Password must contain at least 8 characters with 1 UPPERCASE, 1 LOWERCASE, 1 NUMBER, 1 SPECIAL CHARACTER",
-  "error_confirm_password_invalid": "Password must match"
+  "error_confirm_password_invalid": "Password must match",
+
+  "loading": "Loading...",
+  "please_wait_for_a_sec": "Please wait for a sec",
+  "close": "Close"
 }

@@ -1,15 +1,19 @@
 class Dimens {
   // Dimensions using in padding/margin
   static const double dimen5 = 5;
+  static const double dimen8 = 8;
   static const double dimen10 = 10;
   static const double dimen15 = 15;
   static const double dimen20 = 20;
+  static const double dimen25 = 25;
+  static const double dimen30 = 30;
 
   // Border radius
   static const double radius5 = 5;
   static const double radius10 = 10;
 
   // Button height
+  static const double buttonHeight25 = 25;
   static const double buttonHeight30 = 30;
   static const double buttonHeight40 = 40;
 

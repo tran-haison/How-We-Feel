@@ -4,7 +4,10 @@ import 'package:fitness_health_test_app/utils/validators.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ForgotPasswordForm {
+
   final _forgotPasswordModel = ForgotPasswordModel();
+
+  var email = "";
 
   // Stream controller
   final StreamController<bool> _emailController = BehaviorSubject();
@@ -16,6 +19,7 @@ class ForgotPasswordForm {
 
   // On value changed
   void onEmailChanged(String email) {
+    this.email = email;
     _emailController.sink.add(_forgotPasswordModel.checkEmail(email));
     _onFormChecked();
   }

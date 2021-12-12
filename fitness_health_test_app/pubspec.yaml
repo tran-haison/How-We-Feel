@@ -41,6 +41,7 @@ dependencies:
   retrofit: ^3.0.0
   dio: ^4.0.4
   json_annotation: ^4.4.0
+  freezed_annotation: ^1.0.0
   meta: ^1.7.0
   shared_preferences: ^2.0.8
   rxdart: ^0.27.2
@@ -80,6 +81,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/raws/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

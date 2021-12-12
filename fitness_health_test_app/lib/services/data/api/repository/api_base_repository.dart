@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
 
-abstract class BaseRepository {
+abstract class ApiBaseRepository {
 
   Dio get dio => Dio();
 
@@ -10,7 +12,8 @@ abstract class BaseRepository {
     try {
       return call;
     } on Exception catch(e) {
-      return RetrofitResponse.error(e.toString(), 0);
+      log(e.toString());
+      return RetrofitResponse.error(e.toString());
     }
   }
 

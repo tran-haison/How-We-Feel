@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 if (snapshot.connectionState == ConnectionState.active) {
                   final pageItem = snapshot.data;
                   if (pageItem == null) {
-                    return ErrorMessageContainer(text: S.of(context).error);
+                    return ErrorMessageContainer(text: S.of(context).error_general);
                   }
                   return _buildPageItem(pageItem);
                 }
