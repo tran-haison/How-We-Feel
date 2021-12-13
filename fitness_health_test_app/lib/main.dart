@@ -1,9 +1,11 @@
+import 'package:fitness_health_test_app/config/locator/locator.dart';
 import 'package:fitness_health_test_app/generated/l10n.dart';
 import 'package:fitness_health_test_app/ui/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+Future<void> main() async {
+  await setupLocator();
   runApp(const MyApp());
 }
 

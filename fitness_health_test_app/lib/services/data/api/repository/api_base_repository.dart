@@ -1,7 +1,7 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
+import 'package:fitness_health_test_app/config/logger/logger.dart';
 import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
+import 'package:logger/logger.dart';
 
 abstract class ApiBaseRepository {
 
@@ -12,9 +12,8 @@ abstract class ApiBaseRepository {
     try {
       return call;
     } on Exception catch(e) {
-      log(e.toString());
+      logger.e(e.toString());
       return RetrofitResponse.error(e.toString());
     }
   }
-
 }

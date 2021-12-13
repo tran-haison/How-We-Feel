@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:fitness_health_test_app/utils/validators.dart';
+import 'package:fitness_health_test_app/config/utils/validators.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ForgotPasswordForm {

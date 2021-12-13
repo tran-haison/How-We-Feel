@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:fitness_health_test_app/config/logger/logger.dart';
 import 'package:fitness_health_test_app/generated/l10n.dart';
 import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/dialogs/base_alert_dialog.dart';
@@ -130,6 +129,7 @@ class _SignInPageState extends State<SignInPage> {
     try {
       // Wait for login user
       final response = await _viewModel.loginUser(_signInForm.username, _signInForm.password);
+      logger.v(response.toString());
 
       // Dismiss loading dialog
       Navigator.of(context).pop();
@@ -137,9 +137,10 @@ class _SignInPageState extends State<SignInPage> {
       // Handle response from backend
       _handleResponse(response);
     } on Exception catch(e) {
+      logger.e(e.toString());
+
       // Dismiss loading dialog
       Navigator.of(context).pop();
-      log(e.toString());
 
       // Show exception dialog
       final exceptionAlertDialog = ExceptionAlertDialog(

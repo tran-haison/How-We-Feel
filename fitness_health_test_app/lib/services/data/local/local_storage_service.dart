@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:fitness_health_test_app/services/data/models/fitness_test.dart';
 import 'package:flutter/services.dart';
 
-class LocalStorageRepository {
+class LocalStorageService {
 
   Future<List<FitnessTest>> getFitnessTestList() async {
     final jsonText = await rootBundle.loadString("assets/raws/fitness_test.json");
@@ -14,7 +14,7 @@ class LocalStorageRepository {
   }
 
   /// Singleton instance
-  LocalStorageRepository._privateConstructor();
-  static final LocalStorageRepository _instance = LocalStorageRepository._privateConstructor();
-  factory LocalStorageRepository() => _instance;
+  LocalStorageService._privateConstructor();
+  static final LocalStorageService _instance = LocalStorageService._privateConstructor();
+  factory LocalStorageService() => _instance;
 }

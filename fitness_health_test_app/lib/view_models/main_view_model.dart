@@ -1,17 +1,17 @@
-import 'dart:developer';
-
-import 'package:fitness_health_test_app/services/data/local_storage/local_storage_repository.dart';
+import 'package:fitness_health_test_app/config/locator/locator.dart';
+import 'package:fitness_health_test_app/config/logger/logger.dart';
+import 'package:fitness_health_test_app/services/data/local/local_storage_service.dart';
 
 class MainViewModel {
 
-  final LocalStorageRepository _localStorageRepo = LocalStorageRepository();
+  final LocalStorageService _localStorageRepo = locator<LocalStorageService>();
 
   Future<void> getFitnessTestList() async {
     try {
       final data = await _localStorageRepo.getFitnessTestList();
-      log(data.toString());
+      logger.v(data.toString());
     } on Exception catch(e) {
-      log(e.toString());
+      logger.e(e.toString());
     }
   }
 }
