@@ -1,14 +1,15 @@
 import 'package:fitness_health_test_app/config/logger/logger.dart';
 import 'package:fitness_health_test_app/services/data/api/fitness_health_api.dart';
 import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
+import 'package:retrofit/retrofit.dart';
 
 import 'api_base_repository.dart';
 
 abstract class ApiFitnessHealthRepository extends ApiBaseRepository {
-  Future<RetrofitResponse<ResultUserRegisterAndLogin>> registerUser(SendUserRegister sendUserRegister);
-  Future<RetrofitResponse<ResultUserRegisterAndLogin>> loginUser(SendUserLogin sendUserLogin);
-  Future<RetrofitResponse<ResultUserDetail>> getUserDetail(String token);
-  Future<RetrofitResponse<ResultUserUpdateInfo>> updateUserInfo(String token, SendUserUpdateInfo sendUserUpdateInfo);
+  Future<RetrofitResponse<ResultUserInfo>> registerUser(SendUserRegister sendUserRegister);
+  Future<RetrofitResponse<ResultUserInfo>> loginUser(SendUserLogin sendUserLogin);
+  Future<RetrofitResponse<ResultUserInfo>> getUserDetail(String token);
+  Future<RetrofitResponse<ResultUserInfo>> updateUserInfo(String token, SendUserUpdateInfo sendUserUpdateInfo);
   Future<RetrofitResponse<ResultMessage>> updateUserPassword(String token, SendUserUpdatePassword sendUserUpdatePassword);
 }
 
@@ -16,51 +17,51 @@ class ApiFitnessHealthRepositoryImpl extends ApiFitnessHealthRepository {
 
   FitnessHealthApi get _fitnessHealthApi => FitnessHealthApi(dio);
 
-  /// Function to get retrofit response of any type of data
-  RetrofitResponse<T> _getRetrofitResponse<T>(T response) {
-    if (response != null) {
-      logger.v(response.toString());
-      return RetrofitResponse.success(response);
-    } else {
-      logger.e("Response is null");
+  /// Function to get retrofit response of any data type
+  RetrofitResponse<T> _getRetrofitResponse<T>(HttpResponse<T> httpResponse) {
+    final data = httpResponse.data;
+    if (data == null) {
+      logger.e("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: NULL");
       return const RetrofitResponse.error("Response is null");
     }
+    logger.d("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: ${data.toString()}");
+    return RetrofitResponse.success(data);
   }
 
   /// User APIs
 
   @override
-  Future<RetrofitResponse<ResultUserRegisterAndLogin>> registerUser(SendUserRegister sendUserRegister) {
+  Future<RetrofitResponse<ResultUserInfo>> registerUser(SendUserRegister sendUserRegister) {
     return safeApiCall(_registerUser(sendUserRegister));
   }
-  Future<RetrofitResponse<ResultUserRegisterAndLogin>> _registerUser(SendUserRegister sendUserRegister) async {
+  Future<RetrofitResponse<ResultUserInfo>> _registerUser(SendUserRegister sendUserRegister) async {
     final response = await _fitnessHealthApi.registerUser(sendUserRegister);
     return _getRetrofitResponse(response);
   }
 
   @override
-  Future<RetrofitResponse<ResultUserRegisterAndLogin>> loginUser(SendUserLogin sendUserLogin) {
+  Future<RetrofitResponse<ResultUserInfo>> loginUser(SendUserLogin sendUserLogin) {
     return safeApiCall(_loginUser(sendUserLogin));
   }
-  Future<RetrofitResponse<ResultUserRegisterAndLogin>> _loginUser(SendUserLogin sendUserLogin) async {
+  Future<RetrofitResponse<ResultUserInfo>> _loginUser(SendUserLogin sendUserLogin) async {
     final response = await _fitnessHealthApi.loginUser(sendUserLogin);
     return _getRetrofitResponse(response);
   }
 
   @override
-  Future<RetrofitResponse<ResultUserDetail>> getUserDetail(String token) {
+  Future<RetrofitResponse<ResultUserInfo>> getUserDetail(String token) {
     return safeApiCall(_getUserDetail(token));
   }
-  Future<RetrofitResponse<ResultUserDetail>> _getUserDetail(String token) async {
+  Future<RetrofitResponse<ResultUserInfo>> _getUserDetail(String token) async {
     final response = await _fitnessHealthApi.getUserDetail(token);
     return _getRetrofitResponse(response);
   }
 
   @override
-  Future<RetrofitResponse<ResultUserUpdateInfo>> updateUserInfo(String token, SendUserUpdateInfo sendUserUpdateInfo) {
+  Future<RetrofitResponse<ResultUserInfo>> updateUserInfo(String token, SendUserUpdateInfo sendUserUpdateInfo) {
     return safeApiCall(_updateUserInfo(token, sendUserUpdateInfo));
   }
-  Future<RetrofitResponse<ResultUserUpdateInfo>> _updateUserInfo(String token, SendUserUpdateInfo sendUserUpdateInfo) async {
+  Future<RetrofitResponse<ResultUserInfo>> _updateUserInfo(String token, SendUserUpdateInfo sendUserUpdateInfo) async {
     final response = await _fitnessHealthApi.updateUserInfo(token, sendUserUpdateInfo);
     return _getRetrofitResponse(response);
   }
@@ -76,8 +77,5 @@ class ApiFitnessHealthRepositoryImpl extends ApiFitnessHealthRepository {
 
   /****************************************************************************/
 
-  /// Singleton instance
-  ApiFitnessHealthRepositoryImpl._privateConstructor();
-  static final ApiFitnessHealthRepositoryImpl _instance = ApiFitnessHealthRepositoryImpl._privateConstructor();
-  factory ApiFitnessHealthRepositoryImpl() => _instance;
+
 }

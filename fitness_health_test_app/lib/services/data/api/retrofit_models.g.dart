@@ -72,60 +72,18 @@ Map<String, dynamic> _$$_ResultMessageToJson(_$_ResultMessage instance) =>
       'message': instance.message,
     };
 
-_$_ResultUserRegisterAndLogin _$$_ResultUserRegisterAndLoginFromJson(
-        Map<String, dynamic> json) =>
-    _$_ResultUserRegisterAndLogin(
-      response: json['response'] as String?,
-      message: json['message'] as String?,
+_$_ResultUserInfo _$$_ResultUserInfoFromJson(Map<String, dynamic> json) =>
+    _$_ResultUserInfo(
       pk: json['pk'] as int?,
       email: json['email'] as String?,
       username: json['username'] as String?,
       token: json['token'] as String?,
     );
 
-Map<String, dynamic> _$$_ResultUserRegisterAndLoginToJson(
-        _$_ResultUserRegisterAndLogin instance) =>
+Map<String, dynamic> _$$_ResultUserInfoToJson(_$_ResultUserInfo instance) =>
     <String, dynamic>{
-      'response': instance.response,
-      'message': instance.message,
       'pk': instance.pk,
       'email': instance.email,
       'username': instance.username,
       'token': instance.token,
-    };
-
-_$_ResultUserUpdateInfo _$$_ResultUserUpdateInfoFromJson(
-        Map<String, dynamic> json) =>
-    _$_ResultUserUpdateInfo(
-      response: json['response'] as String?,
-      message: json['message'] as String?,
-      pk: json['pk'] as int?,
-      email: json['email'] as String?,
-      username: json['username'] as String?,
-    );
-
-Map<String, dynamic> _$$_ResultUserUpdateInfoToJson(
-        _$_ResultUserUpdateInfo instance) =>
-    <String, dynamic>{
-      'response': instance.response,
-      'message': instance.message,
-      'pk': instance.pk,
-      'email': instance.email,
-      'username': instance.username,
-    };
-
-_$_ResultUserDetail _$$_ResultUserDetailFromJson(Map<String, dynamic> json) =>
-    _$_ResultUserDetail(
-      pk: json['pk'] as int?,
-      email: json['email'] as String?,
-      username: json['username'] as String?,
-      detail: json['detail'] as String?,
-    );
-
-Map<String, dynamic> _$$_ResultUserDetailToJson(_$_ResultUserDetail instance) =>
-    <String, dynamic>{
-      'pk': instance.pk,
-      'email': instance.email,
-      'username': instance.username,
-      'detail': instance.detail,
     };

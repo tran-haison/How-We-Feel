@@ -1,6 +1,7 @@
 import 'package:fitness_health_test_app/config/logger/logger.dart';
 import 'package:fitness_health_test_app/generated/l10n.dart';
 import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
+import 'package:fitness_health_test_app/services/data/models/user_profile.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/dialogs/base_alert_dialog.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/dialogs/exception_alert_dialog.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/dialogs/loading_alert_dialog.dart';
@@ -127,14 +128,11 @@ class _SignInPageState extends State<SignInPage> {
     showAlertDialog(context, loadingDialog);
 
     try {
-      // Wait for login user
       final response = await _viewModel.loginUser(_signInForm.username, _signInForm.password);
-      logger.v(response.toString());
 
       // Dismiss loading dialog
       Navigator.of(context).pop();
 
-      // Handle response from backend
       _handleResponse(response);
     } on Exception catch(e) {
       logger.e(e.toString());
@@ -142,7 +140,6 @@ class _SignInPageState extends State<SignInPage> {
       // Dismiss loading dialog
       Navigator.of(context).pop();
 
-      // Show exception dialog
       final exceptionAlertDialog = ExceptionAlertDialog(
         context: context,
         exception: e.toString(),
@@ -154,7 +151,16 @@ class _SignInPageState extends State<SignInPage> {
   void _handleResponse(RetrofitResponse response) {
     response.when(
       success: (data) {
-        // TODO: save user info to shared preferences and login
+        // Save user profile to local disk
+        final userProfile = UserProfile(
+          pk: data.pk ?? 0,
+          email: data.email ?? "",
+          username: data.username ?? "",
+          token: data.token ?? "",
+        );
+        _viewModel.saveUserProfile(userProfile);
+
+        // TODO: login
         final successDialog = BaseAlertDialog(
           context: context,
           title: "Success",

@@ -40,30 +40,12 @@ class ResultMessage with _$ResultMessage {
   factory ResultMessage.fromJson(Map<String, dynamic> json) => _$ResultMessageFromJson(json);
 }
 @freezed
-class ResultUserRegisterAndLogin with _$ResultUserRegisterAndLogin {
-  const factory ResultUserRegisterAndLogin({
-    String? response,
-    String? message,
+class ResultUserInfo with _$ResultUserInfo {
+  const factory ResultUserInfo({
     int? pk,
     String? email,
     String? username,
     String? token,
-  }) = _ResultUserRegisterAndLogin;
-  factory ResultUserRegisterAndLogin.fromJson(Map<String, dynamic> json) => _$ResultUserRegisterAndLoginFromJson(json);
-}
-@freezed
-class ResultUserUpdateInfo with _$ResultUserUpdateInfo {
-  const factory ResultUserUpdateInfo({
-    String? response,
-    String? message,
-    int? pk,
-    String? email,
-    String? username,
-  }) = _ResultUserUpdateInfo;
-  factory ResultUserUpdateInfo.fromJson(Map<String, dynamic> json) => _$ResultUserUpdateInfoFromJson(json);
-}
-@freezed
-class ResultUserDetail with _$ResultUserDetail {
-  const factory ResultUserDetail({int? pk, String? email, String? username, String? detail}) = _ResultUserDetail;
-  factory ResultUserDetail.fromJson(Map<String, dynamic> json) => _$ResultUserDetailFromJson(json);
+  }) = _ResultUserInfo;
+  factory ResultUserInfo.fromJson(Map<String, dynamic> json) => _$ResultUserInfoFromJson(json);
 }

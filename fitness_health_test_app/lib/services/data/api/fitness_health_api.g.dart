@@ -16,58 +16,62 @@ class _FitnessHealthApi implements FitnessHealthApi {
   String? baseUrl;
 
   @override
-  Future<ResultUserRegisterAndLogin> registerUser(sendUserRegister) async {
+  Future<HttpResponse<ResultUserInfo>> registerUser(sendUserRegister) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(sendUserRegister.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ResultUserRegisterAndLogin>(
+        _setStreamType<HttpResponse<ResultUserInfo>>(
             Options(method: 'POST', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/api/v1/user/register',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ResultUserRegisterAndLogin.fromJson(_result.data!);
-    return value;
+    final value = ResultUserInfo.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<ResultUserRegisterAndLogin> loginUser(sendUserLogin) async {
+  Future<HttpResponse<ResultUserInfo>> loginUser(sendUserLogin) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(sendUserLogin.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ResultUserRegisterAndLogin>(
+        _setStreamType<HttpResponse<ResultUserInfo>>(
             Options(method: 'POST', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/api/v1/user/login',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ResultUserRegisterAndLogin.fromJson(_result.data!);
-    return value;
+    final value = ResultUserInfo.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<ResultUserDetail> getUserDetail(token) async {
+  Future<HttpResponse<ResultUserInfo>> getUserDetail(token) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ResultUserDetail>(
+        _setStreamType<HttpResponse<ResultUserInfo>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/api/v1/user/detail',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ResultUserDetail.fromJson(_result.data!);
-    return value;
+    final value = ResultUserInfo.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<ResultUserUpdateInfo> updateUserInfo(token, sendUserUpdateInfo) async {
+  Future<HttpResponse<ResultUserInfo>> updateUserInfo(
+      token, sendUserUpdateInfo) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
@@ -75,17 +79,18 @@ class _FitnessHealthApi implements FitnessHealthApi {
     final _data = <String, dynamic>{};
     _data.addAll(sendUserUpdateInfo.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ResultUserUpdateInfo>(
+        _setStreamType<HttpResponse<ResultUserInfo>>(
             Options(method: 'PUT', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/api/v1/user/detail/update',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ResultUserUpdateInfo.fromJson(_result.data!);
-    return value;
+    final value = ResultUserInfo.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<ResultMessage> updateUserPassword(
+  Future<HttpResponse<ResultMessage>> updateUserPassword(
       token, sendUserUpdatePassword) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -94,13 +99,14 @@ class _FitnessHealthApi implements FitnessHealthApi {
     final _data = <String, dynamic>{};
     _data.addAll(sendUserUpdatePassword.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ResultMessage>(
+        _setStreamType<HttpResponse<ResultMessage>>(
             Options(method: 'PUT', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/api/v1/user/update_password',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ResultMessage.fromJson(_result.data!);
-    return value;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

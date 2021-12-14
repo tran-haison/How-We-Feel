@@ -1,12 +1,18 @@
 import 'package:fitness_health_test_app/config/locator/locator.dart';
+import 'package:fitness_health_test_app/config/logger/logger.dart';
 import 'package:fitness_health_test_app/generated/l10n.dart';
 import 'package:fitness_health_test_app/ui/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-Future<void> main() async {
-  await setupLocator();
-  runApp(const MyApp());
+void main() async {
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await setupLocator();
+    runApp(const MyApp());
+  } catch(e) {
+    logger.e(e.toString());
+  }
 }
 
 class MyApp extends StatelessWidget {
