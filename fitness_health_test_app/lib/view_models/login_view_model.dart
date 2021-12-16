@@ -23,7 +23,6 @@ class LoginViewModel {
   Function(LoginPageItem) get setLoginPageItem => _loginPageItemController.sink.add;
   Stream<LoginPageItem> get loginPageItemStream => _loginPageItemController.stream;
 
-  /// Login & register user
   Future<RetrofitResponse<ResultUserInfo>> loginUser(String username, String password) async {
     final sendUserLogin = SendUserLogin(username: username, password: password);
     final retrofitResponse = await _fitnessHealthRepo.loginUser(sendUserLogin);
@@ -35,7 +34,6 @@ class LoginViewModel {
     return retrofitResponse;
   }
 
-  /// Save user profile
   Future<void> saveUserProfile(UserProfile userProfile) async {
     final userProfileToString = userProfile.toJson().toString();
     _sharedPrefService.saveString(SharedPrefKey.userProfile, userProfileToString);

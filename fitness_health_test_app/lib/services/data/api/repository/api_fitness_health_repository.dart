@@ -1,5 +1,6 @@
 import 'package:fitness_health_test_app/config/logger/logger.dart';
 import 'package:fitness_health_test_app/services/data/api/fitness_health_api.dart';
+import 'package:fitness_health_test_app/services/data/api/response_code.dart';
 import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -19,13 +20,14 @@ class ApiFitnessHealthRepositoryImpl extends ApiFitnessHealthRepository {
 
   /// Function to get retrofit response of any data type
   RetrofitResponse<T> _getRetrofitResponse<T>(HttpResponse<T> httpResponse) {
-    final data = httpResponse.data;
-    if (data == null) {
-      logger.e("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: NULL");
-      return const RetrofitResponse.error("Response is null");
+    int code = httpResponse.response.statusCode ?? ResponseCode.badRequest;
+    if (code == ResponseCode.ok) {
+      final data = httpResponse.data;
+      logger.d("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: ${data.toString()}");
+      return RetrofitResponse.success(data);
     }
-    logger.d("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: ${data.toString()}");
-    return RetrofitResponse.success(data);
+    logger.e("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: $code: ${ResponseCode.message(code)}");
+    return RetrofitResponse.error("$code: ${ResponseCode.message(code)}");
   }
 
   /// User APIs
