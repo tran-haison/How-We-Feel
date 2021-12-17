@@ -8,9 +8,19 @@ class Dimens {
   static const double dimen25 = 25;
   static const double dimen30 = 30;
 
+  // Elevation
+  static const double elevation0_5 = 0.5;
+  static const double elevation1 = 1;
+  static const double elevation2 = 2;
+  static const double elevation3 = 3;
+
   // Border radius
   static const double radius5 = 5;
   static const double radius10 = 10;
+
+  // Line height
+  static const double lineHeight1 = 1;
+  static const double lineHeight1_2 = 1.2;
 
   // Button height
   static const double buttonHeight25 = 25;

@@ -1,9 +1,10 @@
 import 'package:fitness_health_test_app/values/dimens.dart';
 import 'package:flutter/material.dart';
 
-Future<dynamic> showAlertDialog(BuildContext context, Widget dialog) {
+Future<dynamic> showAlertDialog(BuildContext context, Widget dialog, bool isDismissible) {
   return showDialog(
     context: context,
+    barrierDismissible: isDismissible,
     builder: (context) => dialog,
   );
 }

@@ -19,15 +19,23 @@ class ApiFitnessHealthRepositoryImpl extends ApiFitnessHealthRepository {
   FitnessHealthApi get _fitnessHealthApi => FitnessHealthApi(dio);
 
   /// Function to get retrofit response of any data type
-  RetrofitResponse<T> _getRetrofitResponse<T>(HttpResponse<T> httpResponse) {
+  RetrofitResponse<T> _getRetrofitResponse<T>(HttpResponse httpResponse) {
+    final data = httpResponse.data;
+
+    // Return success after getting correct response
     int code = httpResponse.response.statusCode ?? ResponseCode.badRequest;
-    if (code == ResponseCode.ok) {
-      final data = httpResponse.data;
-      logger.d("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: ${data.toString()}");
+    if (code == ResponseCode.ok && data is T) {
+      logger.d("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: $code: ${data.toString()}}");
       return RetrofitResponse.success(data);
     }
-    logger.e("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: $code: ${ResponseCode.message(code)}");
-    return RetrofitResponse.error("$code: ${ResponseCode.message(code)}");
+
+    // Return error with message
+    logger.e("ApiFitnessHealthRepositoryImpl: getRetrofitResponse: $code: ${data.toString()}}");
+    try {
+      return RetrofitResponse.error("$code: ${data.message}");
+    } catch(e) {
+      return RetrofitResponse.error("$code: ${data.detail}");
+    }
   }
 
   /// User APIs

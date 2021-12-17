@@ -1,7 +1,6 @@
 import 'package:fitness_health_test_app/config/logger/logger.dart';
 import 'package:fitness_health_test_app/generated/l10n.dart';
 import 'package:fitness_health_test_app/services/data/api/retrofit_models.dart';
-import 'package:fitness_health_test_app/services/data/models/user_profile.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/dialogs/base_alert_dialog.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/dialogs/exception_alert_dialog.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/dialogs/loading_alert_dialog.dart';
@@ -126,7 +125,7 @@ class _SignInPageState extends State<SignInPage> {
   Future<void> loginUser() async {
     // Show loading dialog
     final loadingDialog = LoadingAlertDialog(context: context);
-    showAlertDialog(context, loadingDialog);
+    showAlertDialog(context, loadingDialog, false);
 
     try {
       final response = await _viewModel.loginUser(_signInForm.username, _signInForm.password);
@@ -137,11 +136,12 @@ class _SignInPageState extends State<SignInPage> {
       logger.e(e.toString());
       // Dismiss loading dialog
       Navigator.of(context).pop();
+      // Show exception dialog
       final exceptionAlertDialog = ExceptionAlertDialog(
         context: context,
-        exception: e.toString(),
+        exception: S.of(context).error_general,
       );
-      showAlertDialog(context, exceptionAlertDialog);
+      showAlertDialog(context, exceptionAlertDialog, true);
     }
   }
 
@@ -149,13 +149,9 @@ class _SignInPageState extends State<SignInPage> {
     response.when(
       success: (data) {
         // Save user profile to local disk
-        final userProfile = UserProfile(
-          pk: data.pk ?? 0,
-          email: data.email ?? "",
-          username: data.username ?? "",
-          token: data.token ?? "",
-        );
-        _viewModel.saveUserProfile(userProfile);
+        _viewModel.saveUserProfile(data);
+
+        // Navigate to main page
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (_) => const MainPage()),
@@ -168,7 +164,7 @@ class _SignInPageState extends State<SignInPage> {
           context: context,
           exception: errorMessage ?? S.of(context).error_general,
         );
-        showAlertDialog(context, exceptionAlertDialog);
+        showAlertDialog(context, exceptionAlertDialog, true);
       },
     );
   }

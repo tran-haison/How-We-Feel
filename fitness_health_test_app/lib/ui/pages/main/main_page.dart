@@ -4,6 +4,7 @@ import 'package:fitness_health_test_app/ui/pages/main/home/home_page.dart';
 import 'package:fitness_health_test_app/ui/pages/main/profile/profile_page.dart';
 import 'package:fitness_health_test_app/ui/pages/main/report/report_page.dart';
 import 'package:fitness_health_test_app/values/dimens.dart';
+import 'package:fitness_health_test_app/values/fonts.dart';
 import 'package:fitness_health_test_app/view_models/main_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -37,18 +38,22 @@ class _MainPageState extends State<MainPage> {
       create: (context) => _viewModel,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
           automaticallyImplyLeading: false,
-          elevation: 0,
+          elevation: Dimens.elevation0_5,
+          backgroundColor: Colors.white,
           title: Text(S.of(context).app_name),
           titleTextStyle: const TextStyle(
+            fontFamily: Fonts.poppins,
             fontSize: Dimens.fontSize20,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
+            fontWeight: FontWeight.w500,
+            color: Colors.black87,
           ),
           actions: <Widget>[
             IconButton(
+              color: Colors.black87,
               onPressed: () {
                 // TODO: open settings
               },
@@ -95,28 +100,30 @@ class _MainPageState extends State<MainPage> {
 
   Widget _buildBottomNavigationBar() {
     return StreamBuilder<int>(
-        stream: _viewModel.mainPageItemStream,
-        builder: (context, snapshot) {
-          final pageItemIndex = snapshot.data;
-          return BottomNavigationBar(
-            selectedItemColor: Colors.blue,
-            currentIndex: pageItemIndex ?? 0,
-            onTap: _viewModel.onPageItemSelected,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.home_rounded),
-                label: S.of(context).main_bottom_nav_bar_home,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.view_list_rounded),
-                label: S.of(context).main_bottom_nav_bar_report,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.manage_accounts_rounded),
-                label: S.of(context).main_bottom_nav_bar_profile,
-              ),
-            ],
-          );
-        });
+      stream: _viewModel.mainPageItemStream,
+      builder: (context, snapshot) {
+        final pageItemIndex = snapshot.data;
+        return BottomNavigationBar(
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.blue,
+          currentIndex: pageItemIndex ?? 0,
+          onTap: _viewModel.onPageItemSelected,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.home_rounded),
+              label: S.of(context).main_bottom_nav_bar_home,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.view_list_rounded),
+              label: S.of(context).main_bottom_nav_bar_report,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.manage_accounts_rounded),
+              label: S.of(context).main_bottom_nav_bar_profile,
+            ),
+          ],
+        );
+      },
+    );
   }
 }

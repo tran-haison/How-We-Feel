@@ -1,3 +1,4 @@
+import 'package:fitness_health_test_app/values/dimens.dart';
 import 'package:flutter/material.dart';
 
 class ReportPage extends StatelessWidget {
@@ -5,8 +6,14 @@ class ReportPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Report"),
+    return const Center(
+      child: Text(
+        "Coming soon",
+        style: TextStyle(
+          fontSize: Dimens.fontSize16,
+          color: Colors.red,
+        ),
+      ),
     );
   }
 }

@@ -40,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
       create: (context) => _viewModel,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(Dimens.dimen15),

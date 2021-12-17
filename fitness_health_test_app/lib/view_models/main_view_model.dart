@@ -14,17 +14,16 @@ class MainViewModel {
   Stream<int> get mainPageItemStream => _mainPageItemController.stream;
   Function(int) get setMainPageItem => _mainPageItemController.sink.add;
 
-  void onPageItemSelected(int pageItemIndex) async {
-    final lastIndex = await mainPageItemStream.last;
-    if (pageItemIndex == lastIndex) {
+  void onPageItemSelected(int pageItemIndex) {
+    final currentValue = _mainPageItemController.value;
+    if (pageItemIndex == currentValue) {
       return;
     }
     setMainPageItem(pageItemIndex);
   }
 
   Future<List<FitnessTest>> getFitnessTestList() async {
-    final fitnessTestList = await _localStorageService.getFitnessTestList();
-    return fitnessTestList;
+    return _localStorageService.getFitnessTestList();
   }
 
   void dispose() {

@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_email_invalid": MessageLookupByLibrary.simpleMessage(
             "Invalid email! Please enter correct email"),
         "error_general": MessageLookupByLibrary.simpleMessage(
-            "Something\'s wrong! Please try again"),
+            "Something wrong! Please try again"),
         "error_password_invalid": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters with 1 UPPERCASE, 1 LOWERCASE, 1 NUMBER, 1 SPECIAL CHARACTER"),
         "error_username_invalid":
@@ -72,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Profile"),
         "main_bottom_nav_bar_report":
             MessageLookupByLibrary.simpleMessage("Report"),
+        "main_home_fitness_test":
+            MessageLookupByLibrary.simpleMessage("Fitness Test"),
         "please_wait_for_a_sec":
             MessageLookupByLibrary.simpleMessage("Please wait for a sec")
       };

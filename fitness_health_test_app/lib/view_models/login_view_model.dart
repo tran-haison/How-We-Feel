@@ -34,7 +34,13 @@ class LoginViewModel {
     return retrofitResponse;
   }
 
-  Future<void> saveUserProfile(UserProfile userProfile) async {
+  Future<void> saveUserProfile(dynamic data) async {
+    final userProfile = UserProfile(
+      pk: data.pk ?? 0,
+      email: data.email ?? "",
+      username: data.username ?? "",
+      token: data.token ?? "",
+    );
     final userProfileToString = userProfile.toJson().toString();
     _sharedPrefService.saveString(SharedPrefKey.userProfile, userProfileToString);
   }

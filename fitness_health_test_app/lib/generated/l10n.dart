@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `Fitness Test`
+  String get main_home_fitness_test {
+    return Intl.message(
+      'Fitness Test',
+      name: 'main_home_fitness_test',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `ERROR`
   String get error {
     return Intl.message(
@@ -270,10 +280,10 @@ class S {
     );
   }
 
-  /// `Something's wrong! Please try again`
+  /// `Something wrong! Please try again`
   String get error_general {
     return Intl.message(
-      'Something\'s wrong! Please try again',
+      'Something wrong! Please try again',
       name: 'error_general',
       desc: '',
       args: [],
