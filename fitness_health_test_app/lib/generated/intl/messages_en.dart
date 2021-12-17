@@ -22,8 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "app_name":
-            MessageLookupByLibrary.simpleMessage("Fitness Health Test App"),
+        "app_name": MessageLookupByLibrary.simpleMessage("Vigour"),
+        "app_name_long":
+            MessageLookupByLibrary.simpleMessage("Vigour: Fitness Test"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "error": MessageLookupByLibrary.simpleMessage("ERROR"),
         "error_confirm_password_invalid":
@@ -65,6 +66,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_sign_up_welcome_title":
             MessageLookupByLibrary.simpleMessage("Welcome,"),
         "login_username": MessageLookupByLibrary.simpleMessage("Username"),
+        "main_bottom_nav_bar_home":
+            MessageLookupByLibrary.simpleMessage("Home"),
+        "main_bottom_nav_bar_profile":
+            MessageLookupByLibrary.simpleMessage("Profile"),
+        "main_bottom_nav_bar_report":
+            MessageLookupByLibrary.simpleMessage("Report"),
         "please_wait_for_a_sec":
             MessageLookupByLibrary.simpleMessage("Please wait for a sec")
       };

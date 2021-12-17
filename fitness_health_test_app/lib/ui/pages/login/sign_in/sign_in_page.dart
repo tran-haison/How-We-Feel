@@ -12,6 +12,7 @@ import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text
 import 'package:fitness_health_test_app/ui/common_widgets/login_pages/login_text_title.dart';
 import 'package:fitness_health_test_app/ui/pages/login/login_page_item.dart';
 import 'package:fitness_health_test_app/ui/pages/login/sign_in/sign_in_form.dart';
+import 'package:fitness_health_test_app/ui/pages/main/main_page.dart';
 import 'package:fitness_health_test_app/values/dimens.dart';
 import 'package:fitness_health_test_app/view_models/login_view_model.dart';
 import 'package:flutter/material.dart';
@@ -129,17 +130,13 @@ class _SignInPageState extends State<SignInPage> {
 
     try {
       final response = await _viewModel.loginUser(_signInForm.username, _signInForm.password);
-
       // Dismiss loading dialog
       Navigator.of(context).pop();
-
       _handleResponse(response);
-    } on Exception catch(e) {
+    } on Exception catch (e) {
       logger.e(e.toString());
-
       // Dismiss loading dialog
       Navigator.of(context).pop();
-
       final exceptionAlertDialog = ExceptionAlertDialog(
         context: context,
         exception: e.toString(),
@@ -159,15 +156,11 @@ class _SignInPageState extends State<SignInPage> {
           token: data.token ?? "",
         );
         _viewModel.saveUserProfile(userProfile);
-
-        // TODO: login
-        final successDialog = BaseAlertDialog(
-          context: context,
-          title: "Success",
-          content: data.toString(),
-          defaultActionText: "OK",
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const MainPage()),
+          (_) => false,
         );
-        showAlertDialog(context, successDialog);
       },
       error: (errorMessage) {
         // Show exception dialog

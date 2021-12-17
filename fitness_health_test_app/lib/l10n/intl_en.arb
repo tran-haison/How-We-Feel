@@ -1,5 +1,6 @@
 {
-  "app_name": "Fitness Health Test App",
+  "app_name": "Vigour",
+  "app_name_long": "Vigour: Fitness Test",
 
   "login_sign_in_welcome_title": "Welcome back,",
   "login_sign_in_welcome_prompt": "Enter username and password to get started",
@@ -17,6 +18,10 @@
   "login_email": "Email",
   "login_password": "Password",
   "login_confirm_password": "Confirm password",
+
+  "main_bottom_nav_bar_home": "Home",
+  "main_bottom_nav_bar_report": "Report",
+  "main_bottom_nav_bar_profile": "Profile",
 
   "error": "ERROR",
   "error_general": "Something's wrong! Please try again",

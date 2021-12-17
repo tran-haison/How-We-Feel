@@ -50,11 +50,21 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Fitness Health Test App`
+  /// `Vigour`
   String get app_name {
     return Intl.message(
-      'Fitness Health Test App',
+      'Vigour',
       name: 'app_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vigour: Fitness Test`
+  String get app_name_long {
+    return Intl.message(
+      'Vigour: Fitness Test',
+      name: 'app_name_long',
       desc: '',
       args: [],
     );
@@ -215,6 +225,36 @@ class S {
     return Intl.message(
       'Confirm password',
       name: 'login_confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get main_bottom_nav_bar_home {
+    return Intl.message(
+      'Home',
+      name: 'main_bottom_nav_bar_home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report`
+  String get main_bottom_nav_bar_report {
+    return Intl.message(
+      'Report',
+      name: 'main_bottom_nav_bar_report',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get main_bottom_nav_bar_profile {
+    return Intl.message(
+      'Profile',
+      name: 'main_bottom_nav_bar_profile',
       desc: '',
       args: [],
     );
