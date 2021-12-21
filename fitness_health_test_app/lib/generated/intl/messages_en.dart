@@ -37,6 +37,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must contain at least 8 characters with 1 UPPERCASE, 1 LOWERCASE, 1 NUMBER, 1 SPECIAL CHARACTER"),
         "error_username_invalid":
             MessageLookupByLibrary.simpleMessage("Username cannot be empty"),
+        "fitness_test_description":
+            MessageLookupByLibrary.simpleMessage("Description"),
+        "fitness_test_disease_analysis":
+            MessageLookupByLibrary.simpleMessage("Disease analysis"),
+        "fitness_test_goal": MessageLookupByLibrary.simpleMessage("Goal"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "login_confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),

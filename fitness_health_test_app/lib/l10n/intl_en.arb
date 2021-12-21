@@ -24,6 +24,10 @@
   "main_bottom_nav_bar_profile": "Profile",
   "main_home_fitness_test": "Fitness Test",
 
+  "fitness_test_goal": "Goal",
+  "fitness_test_description": "Description",
+  "fitness_test_disease_analysis": "Disease analysis",
+
   "error": "ERROR",
   "error_general": "Something wrong! Please try again",
   "error_email_invalid": "Invalid email! Please enter correct email",

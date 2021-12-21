@@ -1,6 +1,7 @@
 import 'package:fitness_health_test_app/generated/l10n.dart';
 import 'package:fitness_health_test_app/services/data/models/fitness_test.dart';
 import 'package:fitness_health_test_app/ui/common_widgets/text_heading.dart';
+import 'package:fitness_health_test_app/ui/pages/main/home/test/home_test_page.dart';
 import 'package:fitness_health_test_app/values/dimens.dart';
 import 'package:fitness_health_test_app/view_models/main_view_model.dart';
 import 'package:flutter/material.dart';
@@ -77,58 +78,66 @@ class _HomePageState extends State<HomePage> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(Dimens.radius5),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: Dimens.dimen10,
-          horizontal: Dimens.dimen15,
-        ),
-        child: IntrinsicHeight(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              const Icon(
-                Icons.fitness_center_rounded,
-                color: Colors.grey,
-              ),
-              const SizedBox(
-                height: 35,
-                child: VerticalDivider(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(Dimens.radius5),
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => HomeTestPage(fitnessTest: fitnessTest),
+          ));
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: Dimens.dimen10,
+            horizontal: Dimens.dimen15,
+          ),
+          child: IntrinsicHeight(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                const Icon(
+                  Icons.fitness_center_rounded,
                   color: Colors.grey,
-                  width: Dimens.dimen20,
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      fitnessTest.name,
-                      style: const TextStyle(
-                        fontSize: Dimens.fontSize16,
-                        fontWeight: FontWeight.w500,
-                        height: Dimens.lineHeight1_2,
-                      ),
-                    ),
-                    Text(
-                      fitnessTest.goal,
-                      style: const TextStyle(
-                        fontSize: Dimens.fontSize12,
-                        color: Colors.grey,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                const SizedBox(
+                  height: 35,
+                  child: VerticalDivider(
+                    color: Colors.grey,
+                    width: Dimens.dimen20,
+                  ),
                 ),
-              ),
-              const SizedBox(width: Dimens.dimen10),
-              const Icon(
-                Icons.arrow_right_alt_rounded,
-                color: Colors.grey,
-              ),
-            ],
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        fitnessTest.name,
+                        style: const TextStyle(
+                          fontSize: Dimens.fontSize14,
+                          fontWeight: FontWeight.w500,
+                          height: Dimens.lineHeight1_2,
+                        ),
+                      ),
+                      Text(
+                        fitnessTest.goal,
+                        style: const TextStyle(
+                          fontSize: Dimens.fontSize12,
+                          color: Colors.grey,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: Dimens.dimen10),
+                const Icon(
+                  Icons.arrow_right_alt_rounded,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
           ),
         ),
       ),

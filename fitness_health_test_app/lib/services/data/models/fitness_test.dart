@@ -10,6 +10,7 @@ class FitnessTest {
     required this.goal,
     required this.description,
     required this.disease_analysis,
+    required this.image,
   });
 
   int id;
@@ -17,6 +18,7 @@ class FitnessTest {
   String goal;
   String description;
   String disease_analysis;
+  String image;
 
   factory FitnessTest.fromJson(Map<String, dynamic> json) => _$FitnessTestFromJson(json);
   Map<String, dynamic> toJson() => _$FitnessTestToJson(this);

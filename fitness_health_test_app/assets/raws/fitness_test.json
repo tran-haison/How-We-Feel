@@ -5,56 +5,64 @@
       "name": "Bondarevsky Test",
       "goal": "Brain disease prediction",
       "description": "First, stand up straight with two feet, then bring one leg back and tilt it at a 90-degree angle to the other. Stay in this position for 60 seconds. Or close your eyes then stay in 20 seconds.",
-      "disease_analysis": "If you stagger and can't keep steady, chances are you'll be at high risk for brain diseases in the near future. More specifically, it is an early indicator of the risk of stroke and dementia diseases like Alzheimer's. Although these are only the first signals, they can have an immediate impact on the patient's balance of health as well as memory."
+      "disease_analysis": "If you stagger and can't keep steady, chances are you'll be at high risk for brain diseases in the near future. More specifically, it is an early indicator of the risk of stroke and dementia diseases like Alzheimer's. Although these are only the first signals, they can have an immediate impact on the patient's balance of health as well as memory.",
+      "image": "bondarevsky-test.png"
     },
     {
       "id": 2,
       "name": "Ruffier Squat Test",
       "goal": "Muscle endurance testing",
       "description": "First, sit and then stand up, repeat 10 times in 20 seconds.",
-      "disease_analysis": "Adults who do this exercise smoothly have a higher survival rate than those who take longer to complete. Because this exercise is a testament to the flexibility of the muscles and the rhythmic and flexible coordination of the body and the heart."
+      "disease_analysis": "Adults who do this exercise smoothly have a higher survival rate than those who take longer to complete. Because this exercise is a testament to the flexibility of the muscles and the rhythmic and flexible coordination of the body and the heart.",
+      "image": "ruffier-squat-test.jpg"
     },
     {
       "id": 3,
       "name": "Toes Touching Test",
       "goal": "Checking for cardiovascular problems",
       "description": "Sit firmly on the floor, legs stretched out in front of you, then squeeze down close to your feet and reach your hands to the tips of your toes.",
-      "disease_analysis": "If you can't do this test, it means you have a high risk of heart problems. It is because your body is too \"stiff\" that your hands cannot reach your feet. Because your arteries are less elastic and your blood circulation is slow, your heart has to work harder to pump blood around your body. Over time, it increases the risk of heart attack and stroke. To improve this situation, straighten your body before sleeping, your health will improve markedly."
+      "disease_analysis": "If you can't do this test, it means you have a high risk of heart problems. It is because your body is too \"stiff\" that your hands cannot reach your feet. Because your arteries are less elastic and your blood circulation is slow, your heart has to work harder to pump blood around your body. Over time, it increases the risk of heart attack and stroke. To improve this situation, straighten your body before sleeping, your health will improve markedly.",
+      "image": "toes-touching-test.jpg"
     },
     {
       "id": 4,
       "name": "Standing Up While Laying Down Test",
       "goal": "Checking for iron deficiency in the body",
       "description": "Lie down on the floor, then sit up and lie down again quickly.",
-      "disease_analysis": "Dizziness when standing up is one of the signs of iron deficiency, maybe even anemia, low blood pressure, dehydration... Not only that, such a sudden change of position can be related to the health of many internal organs in the body such as the heart, blood pressure, brain, nervous system."
+      "disease_analysis": "Dizziness when standing up is one of the signs of iron deficiency, maybe even anemia, low blood pressure, dehydration... Not only that, such a sudden change of position can be related to the health of many internal organs in the body such as the heart, blood pressure, brain, nervous system.",
+      "image": "standing-up-while-laying-down-test.jpg"
     },
     {
       "id": 5,
       "name": "Parkinson Test",
       "goal": "Parkinson disease prediction",
       "description": "Place a sheet of paper on your arm and hold this position for 20 seconds.",
-      "disease_analysis": "If you can't hold a piece of paper and start shaking, that's an early symptom of Parkinson's disease, a degenerative disorder of the central nervous system that affects movement, balance, and coordination. muscle control of the patient. In addition to Parkinson's disease, shaking hands is also a sign of a lack of vitamins, hormones and the health of the nervous system."
+      "disease_analysis": "If you can't hold a piece of paper and start shaking, that's an early symptom of Parkinson's disease, a degenerative disorder of the central nervous system that affects movement, balance, and coordination. muscle control of the patient. In addition to Parkinson's disease, shaking hands is also a sign of a lack of vitamins, hormones and the health of the nervous system.",
+      "image": "parkinson-test.jpg"
     },
     {
       "id": 6,
       "name": "Push-up Test",
       "goal": "Measuring upper body strength and endurance",
       "description": "The starting position is facing down with your weight distributed on the hands and feet, arms straight. The body is rigid and straight, and the hands are placed approximately shoulder width apart. Lower your body until your chest nears the floor at the bottom of the movement, and then return up to the starting position. This is one repetition.",
-      "disease_analysis": "A new study done at Harvard TH Chan School of Public Health states that physically active men who can do more than 40 push-ups may have a lower CVD risk than those who can do few. The participants who completed at least 40 push-ups had a 96 percent lower cardiovascular risk than men who had completed 10 or fewer push-ups."
+      "disease_analysis": "A new study done at Harvard TH Chan School of Public Health states that physically active men who can do more than 40 push-ups may have a lower CVD risk than those who can do few. The participants who completed at least 40 push-ups had a 96 percent lower cardiovascular risk than men who had completed 10 or fewer push-ups.",
+      "image": "push-up-test.jpg"
     },
     {
       "id": 7,
       "name": "Vertical Jump Test",
       "goal": "Measuring leg muscle power",
       "description": "Stand side on to a wall and reach up with the hand closest to the wall. Keeping the feet flat on the ground, the point of the fingertips is marked or recorded. Then stand away from the wall, and leap vertically as high as possible using both arms and legs to assist in projecting the body upwards. Attempt to touch the wall at the highest point of the jump. The difference in distance between the standing reach height and the jump height is the score.",
-      "disease_analysis": "A basic vertical jump test allows practitioners to better separate movement skill from general physical capability."
+      "disease_analysis": "A basic vertical jump test allows practitioners to better separate movement skill from general physical capability.",
+      "image": "vertical-jump-test.jpg"
     },
     {
       "id": 8,
       "name": "Sit-up Test",
       "goal": "Measuring abdominal strength and endurance",
       "description": "Lie on a carpeted or cushioned floor with your knees bent at approximately right angles, with feet flat on the ground. Your hands should be resting on your thighs. The feet are not anchored. Squeeze your stomach, push your back flat and raise high enough for your hands to slide along your thighs to touch the tops of your knees. Don't pull with you neck or head and keep your lower back on the floor. Then return to the starting position.",
-      "disease_analysis": "Examine abdominal muscle strength and endurance as well as hip-flexor muscles."
+      "disease_analysis": "Examine abdominal muscle strength and endurance as well as hip-flexor muscles.",
+      "image": "sit-up-test.jpg"
     }
   ]
 }

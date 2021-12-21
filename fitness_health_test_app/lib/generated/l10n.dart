@@ -270,6 +270,36 @@ class S {
     );
   }
 
+  /// `Goal`
+  String get fitness_test_goal {
+    return Intl.message(
+      'Goal',
+      name: 'fitness_test_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get fitness_test_description {
+    return Intl.message(
+      'Description',
+      name: 'fitness_test_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disease analysis`
+  String get fitness_test_disease_analysis {
+    return Intl.message(
+      'Disease analysis',
+      name: 'fitness_test_disease_analysis',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `ERROR`
   String get error {
     return Intl.message(

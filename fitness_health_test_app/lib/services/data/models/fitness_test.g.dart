@@ -12,6 +12,7 @@ FitnessTest _$FitnessTestFromJson(Map<String, dynamic> json) => FitnessTest(
       goal: json['goal'] as String,
       description: json['description'] as String,
       disease_analysis: json['disease_analysis'] as String,
+      image: json['image'] as String,
     );
 
 Map<String, dynamic> _$FitnessTestToJson(FitnessTest instance) =>
@@ -21,4 +22,5 @@ Map<String, dynamic> _$FitnessTestToJson(FitnessTest instance) =>
       'goal': instance.goal,
       'description': instance.description,
       'disease_analysis': instance.disease_analysis,
+      'image': instance.image,
     };
