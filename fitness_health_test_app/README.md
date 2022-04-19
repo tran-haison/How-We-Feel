@@ -1,4 +1,3 @@
 # how_we_feel
 
-Post-Covid19 Physical Recovery Exercises
-
+Covid-19 Physical Recovery Exercises
