@@ -1,2 +1,2 @@
 # How We Feel
-Post - COVID19 Physical Recovery Exercises
+Covid-19 Physical Recovery Exercises
